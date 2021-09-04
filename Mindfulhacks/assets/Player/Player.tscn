@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
+[ext_resource path="res://assets/Player/BusGhost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/Player/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Player/walk cycle.png" type="Texture" id=4]
@@ -236,7 +237,7 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 23 )
 parameters/Idle/blend_position = Vector2( 0.749186, 0.974138 )
-parameters/Run/blend_position = Vector2( 0, 0 )
+parameters/Run/blend_position = Vector2( -0.00194174, 0.0121458 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 3 )]
 
@@ -244,5 +245,8 @@ parameters/Run/blend_position = Vector2( 0, 0 )
 position = Vector2( 0.477078, -1.12768 )
 scale = Vector2( 1.5, 1 )
 shape = SubResource( 24 )
+
+[node name="BusGhost" parent="." instance=ExtResource( 1 )]
+position = Vector2( 20.1346, -9.84909 )
 
 [editable path="Hitbox"]

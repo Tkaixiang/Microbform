@@ -48,8 +48,9 @@ func playNext():
 			optionsText[x].text = msg["options"][x]
 		SelectOptionAnime.play("DisplayMsg&Options")
 	
-func setPic(path):
+func setPic(path, scale=Vector2(1.223, 0.902)):
 	Picture.texture = load(path)
+	Picture.scale = scale
 		
 func _ready():
 	self.visible = false

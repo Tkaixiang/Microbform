@@ -6,6 +6,7 @@ onready var questionNumber = 0
 onready var tapCount = 0  # tap count 
 onready var timer = get_node("CardReaderTimer")
 onready var anxietyLevel = root.get("anxietyMeter")
+onready var player = $Player
 
 
 ### TODO: NEED TO INCREMENT ANXIETY METER VALUE IN ROOM EXIT SEQUENCE 
@@ -26,6 +27,7 @@ func _on_CardReader_area_entered(area):
 	
 	if root.doorDoneState[0] == false: 
 	# Start of interaction with card reader 
+		player.movement = false
 		scene_1() 
 		SpeechText.playNext()
 	
@@ -132,6 +134,7 @@ func selectedOption(option):
 func scene_1(): 
 	questionNumber = 1
 	SpeechText.setPic("res://assets/Bus/wallet_missing.png")
+	root.setAnxietyMeter(anxietyLevel + 0.1, true)
 	SpeechText.addQuestion("You're on a bus! Time to pull out your wallet", ["Check left pocket", "Check right pocket", "Check bag"])
 
 func scene_2(): 
@@ -163,6 +166,7 @@ func scene_7():
 
 func scene_8(): 
 	questionNumber = 8
+	root.setAnxietyMeter(anxietyLevel + 0.1, true)
 	SpeechText.addQuestion("BUZZ. Invalid card.", ["Try again, but press harder this time", "Take EZ-link card out"])
 	SpeechText.setPic("res://assets/Bus/NAY.png")
 	start_timer()
@@ -190,8 +194,8 @@ func scene_13():
 	SpeechText.setPic("res://assets/Bus/YAY.png")
 	SpeechText.addMsg("It's out! You tap your wallet against the card reader and it flashes the card value screen of success.")
 
-	root.doorDoneState[0] = true 
-	root.setAnxietyMeter(anxietyLevel + 0.1)
+	root.setAnxietyMeter(anxietyLevel + 0.1, true)
+	player.movement = true
 	
 func scene_14(): 
 	questionNumber = 14
@@ -226,8 +230,8 @@ func scene_18():
 	SpeechText.setPic("res://assets/Bus/YAY.png")
 	SpeechText.addMsg("OH THANK THE HEAVENS. The sweet beep of success...")
 	
-	root.doorDoneState[0] = true 
-	root.setAnxietyMeter(anxietyLevel + 0.1)
+	root.setAnxietyMeter(anxietyLevel + 0.1, true)
+	player.movement = true
 
 
 func start_timer(): 

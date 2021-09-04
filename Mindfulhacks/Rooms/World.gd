@@ -64,7 +64,7 @@ func _on_SceneChangeAnime_animation_finished(anim_name):
 		if (meter != null):
 			meter.setAnxietyLevel(anxietyMeter)
 		var player = currentScene.find_node("Player", true, false)
-		if (player != null):
+		if (player != null and doorDones != 3):
 			if (doorDoneState[0] == true):
 				player.activateGhosts("bus")
 			if (doorDoneState[1] == true):

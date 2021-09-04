@@ -137,8 +137,8 @@ func selectedOption(option):
 		progress = 15
 	elif progress == 16:
 		root.setAnxietyMeter(root.anxietyMeter + 0.05, true)
-		SpeechText.addMsg("You decide to hurry off to the party anyways as you are really running out of time")
-		SpeechText.addMsg("the thought that you might have given the stranger the wrong directions lingers ominously over your head...")
+		SpeechText.addMsg("You decide to hurry off to the party as you are really running late...")
+		SpeechText.addMsg("Your anxiety has reached a peak... leading to the physical manifestation of the stranger haunting you for giving the wrong directions")
 		SpeechText.playNext()
 		progress = 17
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/Player/BusGhost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/Player/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Player/walk cycle.png" type="Texture" id=4]
+[ext_resource path="res://assets/Player/CanteenGhost.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 6.0
@@ -247,6 +248,9 @@ scale = Vector2( 1.5, 1 )
 shape = SubResource( 24 )
 
 [node name="BusGhost" parent="." instance=ExtResource( 1 )]
-position = Vector2( 20.1346, -9.84909 )
+position = Vector2( 15.1793, -8.90522 )
+
+[node name="CanteenGhost" parent="." instance=ExtResource( 5 )]
+position = Vector2( 31.2259, -10.6239 )
 
 [editable path="Hitbox"]

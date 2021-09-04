@@ -6,6 +6,7 @@ onready var SpeechText = $Player/Camera2D/SpeechText
 onready var enterName = $Player/Camera2D/SpeechText/EnterName
 onready var STMsg = $Player/Camera2D/SpeechText/Msg
 onready var tooShort = $Player/Camera2D/SpeechText/EnterName/NameTooShort
+onready var lineEdit = $Player/Camera2D/SpeechText/EnterName/LineEdit
 onready var doorDones = [$DoorDone, $DoorDone2, $DoorDone3]
 var initState = 0
 var playerName = "MCB"
@@ -34,6 +35,7 @@ func _all_Done(type):
 		SpeechText.visible = true
 		enterName.visible = true
 		STMsg.visible = false
+		lineEdit.grab_focus()
 		initState = 2
 	elif (initState == 3):
 		player.movement = true

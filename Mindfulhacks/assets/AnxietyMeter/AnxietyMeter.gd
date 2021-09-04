@@ -10,4 +10,4 @@ func _ready():
 # Level is a float value between 0 to 1
 func setAnxietyLevel(level):
 	Meter.rect_size = Vector2((MAX_LENGTH-MIN_LENGTH) * level, 21.0)
-	Meter.color = Color8(int(level * 255.0), 136, 12, 255)
+	Meter.color = Color8(int(level * 255.0), 136 - (level * 136), 12, 255)

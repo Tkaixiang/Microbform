@@ -13,13 +13,13 @@ extents = Vector2( 159.137, 21.868 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3.526, 50.0494 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 2.22766, 5.29675 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 19.8454, 8.6911 )
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=5]
 radius = 8.05622
 
 [node name="Canteen" type="Node2D"]
@@ -49,14 +49,14 @@ shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 68.4779, 71.522 )
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
 [node name="Door1" type="Area2D" parent="."]
 scale = Vector2( 0.890059, 0.992668 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door1"]
 position = Vector2( 182.999, 67.0757 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Door2" type="Area2D" parent="."]
 position = Vector2( 36, 0 )
@@ -64,7 +64,7 @@ scale = Vector2( 0.890059, 0.992668 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door2"]
 position = Vector2( 214.75, 67.0757 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Door3" type="Area2D" parent="."]
 position = Vector2( 27, 0 )
@@ -72,7 +72,7 @@ scale = Vector2( 0.890059, 0.992668 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door3"]
 position = Vector2( 297.529, 67.0757 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="DoorDone" type="Control" parent="."]
 margin_left = 143.002
@@ -195,6 +195,6 @@ rect_scale = Vector2( 0.56, 0.741 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Banana"]
 position = Vector2( 58.2206, 84.0007 )
 scale = Vector2( 0.45, 0.45 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [connection signal="area_entered" from="Banana" to="." method="_on_Banana_area_entered"]

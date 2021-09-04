@@ -48,7 +48,7 @@ func selectedOption(option):
 			if (door1Area):
 				root.gotoScene("res://Rooms/Bus.tscn")
 			elif (door2Area):
-				pass
+				root.gotoScene("res://Rooms/Canteen.tscn")
 			elif (door3Area):
 				root.gotoScene("res://Rooms/Streets.tscn")
 

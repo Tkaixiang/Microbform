@@ -262,6 +262,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="arrow" type="Sprite" parent="."]
+position = Vector2( 99.6545, 56.4713 )
+scale = Vector2( 0.529863, 0.450404 )
+texture = ExtResource( 13 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="arrow"]
+autoplay = "moveRight"
+anims/moveRight = SubResource( 5 )
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 31.4818, 75.7965 )
 scale = Vector2( 1.05674, 1.20685 )
@@ -344,16 +354,6 @@ placeholder_text = "Please enter your name..."
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="arrow" type="Sprite" parent="."]
-position = Vector2( 99.6545, 56.4713 )
-scale = Vector2( 0.529863, 0.450404 )
-texture = ExtResource( 13 )
-hframes = 4
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="arrow"]
-autoplay = "moveRight"
-anims/moveRight = SubResource( 5 )
 
 [connection signal="area_entered" from="Door1" to="." method="_on_Door1_area_entered"]
 [connection signal="area_exited" from="Door1" to="." method="_on_Door1_area_exited"]

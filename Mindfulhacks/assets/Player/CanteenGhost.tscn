@@ -70,46 +70,46 @@ tracks/0/keys = {
 "values": [ 12, 13, 14, 15 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=8]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "floatLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=6]
 animation = "floatDown"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "floatRight"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "floatUp"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=5]
-blend_point_0/node = SubResource( 8 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=9]
+blend_point_0/node = SubResource( 5 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 9 )
+blend_point_1/node = SubResource( 6 )
 blend_point_1/pos = Vector2( 0, 1.1 )
-blend_point_2/node = SubResource( 10 )
+blend_point_2/node = SubResource( 7 )
 blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 11 )
+blend_point_3/node = SubResource( 8 )
 blend_point_3/pos = Vector2( 0, -1 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeStateMachine" id=6]
-states/Float/node = SubResource( 5 )
+[sub_resource type="AnimationNodeStateMachine" id=10]
+states/Float/node = SubResource( 9 )
 states/Float/position = Vector2( 260, 113 )
 start_node = "Float"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=7]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=11]
 
 [node name="CanteenGhost" type="Node2D"]
 
 [node name="canteen ghost" type="Sprite" parent="."]
-position = Vector2( 2.38419e-07, 1.19209e-07 )
-scale = Vector2( 0.558058, 0.510918 )
+position = Vector2( 0, 1.19209e-07 )
+scale = Vector2( 0.521906, 0.477547 )
 texture = ExtResource( 1 )
 hframes = 16
-frame = 1
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/floatDown = SubResource( 1 )
@@ -118,8 +118,8 @@ anims/floatRight = SubResource( 3 )
 anims/floatUp = SubResource( 4 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 6 )
+tree_root = SubResource( 10 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 7 )
+parameters/playback = SubResource( 11 )
 parameters/Float/blend_position = Vector2( 0.833184, 0.369828 )

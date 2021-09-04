@@ -80,7 +80,7 @@ func _on_Door3_area_entered(area):
 	door3Area = true
 	
 	if (not root.doorDoneState[2]):
-		SpeechText.addMsg("It's my friend MCB's birthday! Join me as we are going on a trip in our favourite rocket shi- I mean, on a trip to the party!")
+		SpeechText.addMsg("It's my friend MCB's birthday! Let's head to the party!")
 		SpeechText.addQuestion("Head to the party?", ["Yes", "No"])
 		SpeechText.playNext()
 func _on_Door3_area_exited(area):
@@ -89,7 +89,7 @@ func _on_Door3_area_exited(area):
 
 func _on_LineEdit_text_entered(new_text):
 	if (initState == 2):
-		if (len(new_text) < 3):
+		if (len(new_text) < 1):
 			tooShort.visible = true
 		else:
 			tooShort.visible = false

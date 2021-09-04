@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/StartingRoom/corridor (without door).png" type="Texture" id=1]
 [ext_resource path="res://assets/Player/Player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/StartingRoom/interiorPack.png" type="Texture" id=10]
 [ext_resource path="res://assets/StartingRoom/street door.png" type="Texture" id=11]
 [ext_resource path="res://assets/AnxietyMeter/AnxietyMeter.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/Streets/arrow.png" type="Texture" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 159.137, 21.868 )
@@ -79,6 +80,23 @@ extents = Vector2( 3.526, 50.0494 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 19.8454, 8.6911 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "moveRight"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 96.0359, 56.4713 ), Vector2( 103.036, 56.4713 ) ]
+}
 
 [node name="StartingRoom" type="Node2D"]
 script = ExtResource( 4 )
@@ -326,6 +344,16 @@ placeholder_text = "Please enter your name..."
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="arrow" type="Sprite" parent="."]
+position = Vector2( 97.7007, 56.4713 )
+scale = Vector2( 0.529863, 0.450404 )
+texture = ExtResource( 13 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="arrow"]
+autoplay = "moveRight"
+anims/moveRight = SubResource( 5 )
 
 [connection signal="area_entered" from="Door1" to="." method="_on_Door1_area_entered"]
 [connection signal="area_exited" from="Door1" to="." method="_on_Door1_area_exited"]

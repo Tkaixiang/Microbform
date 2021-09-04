@@ -91,7 +91,7 @@ func selectedOption(option):
 			SpeechText.setPic("res://assets/Streets/phone.png", Vector2(0.085, 0.067))
 			SpeechText.addMsg("You decided to call your friend")
 			SpeechText.addMsg("Just then... your phone rings")
-			SpeechText.addMsg("MCB Over the Phone: " + root.playerName + " WHERE ARE YOUUUUU!! You are LATE with a big fat L")
+			SpeechText.addMsg("MCB Over the Phone: " + root.playerName + " WHERE ARE YOUUUUU!!")
 			SpeechText.addMsg("*You get embarrssed and try to come up with an excuse")
 			SpeechText.addQuestion("Choose an excuse:", ["I had a stomache", "My bus broke down", "I ran into sentient AIs created by Elon Musk"])
 			progress = 7

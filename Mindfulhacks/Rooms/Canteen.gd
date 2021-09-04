@@ -1,5 +1,6 @@
 extends Node2D
 onready var root = get_tree().current_scene
+onready var anxietyLevel = root.get("anxietyMeter")
 onready var player = $Player
 onready var SpeechText = $Player/Camera2D/SpeechText
 onready var STMsg = $Player/Camera2D/SpeechText/Msg
@@ -44,51 +45,6 @@ func _all_Done(type):
 func selectedOption(option):
 	player.movement = true
 	SpeechText.stopNReset()
-	# if (initState == 3):
-		#SpeechText.stopNReset()
-		#if (option == 1):
-			#if (door1Area):
-				#root.gotoScene("res://Rooms/TestScene.tscn")
-			#elif (door2Area):
-				#pass
-			#elif (door3Area):
-				#pass
-
-func setDoorDone(number):
-	doorDones[number].visible = true
-		
-func _on_Door1_area_entered(area):
-	door1Area = true
-	if (not root.doorDoneState[0]):
-		SpeechText.addMsg("Ah, it's time to take the bus to school before I am late! Gas gas gas ")
-		SpeechText.addQuestion("Take the bus?", ["Yes", "No"])
-		SpeechText.playNext()
-func _on_Door1_area_exited(area):
-	SpeechText.stopNReset()
-	door1Area = false
-
-func _on_Door2_area_entered(area):
-	door2Area = true
-	
-	if (not root.doorDoneState[1]):
-		SpeechText.addMsg("The business, social and economical capital of this civilisation. Where everything goes down.")
-		SpeechText.addQuestion("Head to the canteen?", ["Yes", "No"])
-		SpeechText.playNext()
-func _on_Door2_area_exited(area):
-	SpeechText.stopNReset()
-	door2Area = false
-
-func _on_Door3_area_entered(area):
-	door3Area = true
-	
-	if (not root.doorDoneState[2]):
-		SpeechText.addMsg("It's my friend MCB's birthday! Join me as we are going on a trip in our favourite rocket shi- I mean, on a trip to the party!")
-		SpeechText.addQuestion("Head to the party?", ["Yes", "No"])
-		SpeechText.playNext()
-		
-func _on_Door3_area_exited(area):
-	SpeechText.stopNReset()
-	door3Area = false
 
 func _on_Banana_area_entered(area):
 	
@@ -98,13 +54,13 @@ func _on_Banana_area_entered(area):
 		SpeechText.addMsg("Crash!")
 		SpeechText.addMsg("As you are wondering why your world has suddenly turned 180 degrees, a burst of stinging pain registers in your knees.")
 		SpeechText.addMsg("Congratulations on triggering the flag of one of the most embarassing incidents that can happen in a canteen, tripping over a banana peel!")
+		
+		root.setAnxietyMeter(anxietyLevel + 0.1)
 		# should probably be something like player stands up here
 		SpeechText.addMsg("Almost everybody's gazes are on your body, and no, this time it is not your made-up illusion.")
 		SpeechText.addMsg("As you slowly stand up, uncontrollable thoughts such as 'I want to jump into a hole right now' and 'Why am I so stupid goddamnit' pour into...")
 		SpeechText.addMsg("...your mind.")
 		SpeechText.addMsg("It feels as if the stares of the people around you are full of judgement and disdain for your idiocy.")
-		
-		
 		
 		SpeechText.addQuestion("What will you do?", ["Go into panic attack mode.", "Smile. Tripping over things is perfectly normal human behavior.", "Take a deep breath, and continue walking forward. Your stomach is still growling."])
 		SpeechText.playNext()
@@ -118,7 +74,7 @@ func _on_NoodleStall_area_entered(area):
 		
 		SpeechText.addMsg("Regardless, pigs need to fly and people need to eat.")
 		SpeechText.addMsg("You suddenly experience an intense sense of longing for pork - particularly the soft, fragrant, absolutely appetizing pork ramen at...")
-		SpeechText.addMsg("...the Japanese store.")
+		SpeechText.addMsg("...the Noodles store.")
 		SpeechText.addMsg("~~Tick. Tock. Tick. Tock. I'm an innocent clock~~")
 		SpeechText.addMsg("After waiting patiently for ten minutes, you finally find yourself face-to-face with a mouth-watering bowl of steaming noodles.")
 		SpeechText.addMsg("By now, your negative emotions from the fall have mostly dissipated.")
@@ -130,6 +86,9 @@ func _on_NoodleStall_area_entered(area):
 		SpeechText.addMsg("...sincere eyes, right?")
 		
 		SpeechText.addMsg("You pull out your wallet and examine its content. A sole, hazardly folded fifty-dollar bill lies quietly within.")
+		
+		root.setAnxietyMeter(anxietyLevel + 0.1)
+		
 		SpeechText.addMsg("Your smile freezes over.")
 		SpeechText.addMsg("You attempt to pull out your phone for NETS payment, but realize with horror that the Singtel 4G mobile data network has collapsed yet again.")
 		SpeechText.addMsg("You take a deep breath and hand the fifty-dollar bill to the auntie, who now wears a look you interpret as disdain.")

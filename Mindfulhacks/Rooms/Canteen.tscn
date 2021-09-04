@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/Speech Text/SpeechText.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/AnxietyMeter/AnxietyMeter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Rooms/Canteen.gd" type="Script" id=4]
 [ext_resource path="res://assets/Canteen/canteen interior.png" type="Texture" id=5]
-[ext_resource path="res://assets/Fonts/Smaller.tres" type="DynamicFont" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 159.137, 21.868 )
@@ -15,9 +14,6 @@ extents = Vector2( 3.526, 50.0494 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 2.22766, 5.29675 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 19.8454, 8.6911 )
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 8.05622
@@ -52,122 +48,6 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 68.4779, 71.522 )
 shape = SubResource( 5 )
-
-[node name="Door1" type="Area2D" parent="."]
-scale = Vector2( 0.890059, 0.992668 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door1"]
-position = Vector2( 182.999, 67.0757 )
-shape = SubResource( 3 )
-
-[node name="Door2" type="Area2D" parent="."]
-position = Vector2( 36, 0 )
-scale = Vector2( 0.890059, 0.992668 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door2"]
-position = Vector2( 214.75, 67.0757 )
-shape = SubResource( 3 )
-
-[node name="Door3" type="Area2D" parent="."]
-position = Vector2( 27, 0 )
-scale = Vector2( 0.890059, 0.992668 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door3"]
-position = Vector2( 297.529, 67.0757 )
-shape = SubResource( 3 )
-
-[node name="DoorDone" type="Control" parent="."]
-margin_left = 143.002
-margin_top = 44.0007
-margin_right = 183.002
-margin_bottom = 84.0007
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel" type="Panel" parent="DoorDone"]
-margin_top = 2.18921
-margin_right = 41.0
-margin_bottom = 13.1892
-rect_rotation = -18.7
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Done" type="Label" parent="DoorDone"]
-margin_left = 3.0
-margin_top = 1.18921
-margin_right = 39.0
-margin_bottom = 11.1892
-rect_rotation = -18.652
-custom_fonts/font = ExtResource( 6 )
-custom_colors/font_color = Color( 0.87451, 0, 0, 1 )
-text = "Anxiety"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DoorDone2" type="Control" parent="."]
-margin_left = 205.002
-margin_top = 44.0007
-margin_right = 245.002
-margin_bottom = 84.0007
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel" type="Panel" parent="DoorDone2"]
-margin_top = 2.18921
-margin_right = 41.0
-margin_bottom = 13.1892
-rect_rotation = -18.7
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Done" type="Label" parent="DoorDone2"]
-margin_left = 3.0
-margin_top = 1.18921
-margin_right = 39.0
-margin_bottom = 11.1892
-rect_rotation = -18.652
-custom_fonts/font = ExtResource( 6 )
-custom_colors/font_color = Color( 0.87451, 0, 0, 1 )
-text = "Anxiety"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DoorDone3" type="Control" parent="."]
-margin_left = 270.002
-margin_top = 44.0007
-margin_right = 310.002
-margin_bottom = 84.0007
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel" type="Panel" parent="DoorDone3"]
-margin_top = 2.18921
-margin_right = 41.0
-margin_bottom = 13.1892
-rect_rotation = -18.7
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Done" type="Label" parent="DoorDone3"]
-margin_left = 3.0
-margin_top = 1.18921
-margin_right = 39.0
-margin_bottom = 11.1892
-rect_rotation = -18.652
-custom_fonts/font = ExtResource( 6 )
-custom_colors/font_color = Color( 0.87451, 0, 0, 1 )
-text = "Anxiety"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 31.4818, 75.7965 )

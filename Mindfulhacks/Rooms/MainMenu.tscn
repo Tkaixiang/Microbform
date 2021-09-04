@@ -1,0 +1,122 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/Fonts/ThaleahFat.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Fonts/Bigger.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/MainMenu/MainMenu.gd" type="Script" id=3]
+[ext_resource path="res://assets/Fonts/Smaller.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/Player/walk cycle.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "PlayerWalk"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("playerAnim:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="playerAnim" type="Sprite" parent="."]
+position = Vector2( 238.082, 29.9292 )
+scale = Vector2( 1.28374, 1.09503 )
+texture = ExtResource( 5 )
+hframes = 20
+
+[node name="Title" type="Label" parent="."]
+margin_left = 68.771
+margin_top = 17.4137
+margin_right = 219.771
+margin_bottom = 45.4137
+custom_fonts/font = ExtResource( 2 )
+text = "Microbform"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainPanel" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Button" parent="MainPanel"]
+modulate = Color( 0, 1, 0.976471, 1 )
+margin_left = 96.2373
+margin_top = 59.9932
+margin_right = 224.237
+margin_bottom = 78.9932
+custom_fonts/font = ExtResource( 1 )
+text = "Start Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Button" parent="MainPanel"]
+modulate = Color( 0, 1, 0.976471, 1 )
+margin_left = 96.2373
+margin_top = 90.334
+margin_right = 224.237
+margin_bottom = 109.334
+custom_fonts/font = ExtResource( 1 )
+text = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsMenu" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsText" type="RichTextLabel" parent="CreditsMenu"]
+margin_left = 40.0
+margin_top = 46.0
+margin_right = 280.0
+margin_bottom = 146.0
+custom_fonts/mono_font = ExtResource( 4 )
+custom_fonts/normal_font = ExtResource( 4 )
+text = "Developers:
+  - Teo Kai Xiang
+  - Lien Cai ting
+  - Grace zhu
+  - dinh thao vy
+
+assets used:
+  - "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsBack" type="Button" parent="CreditsMenu"]
+modulate = Color( 0, 1, 0.976471, 1 )
+margin_left = 96.2373
+margin_top = 146.0
+margin_right = 229.237
+margin_bottom = 170.0
+custom_fonts/font = ExtResource( 1 )
+text = "back to main menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "PlayerWalk"
+anims/PlayerWalk = SubResource( 1 )
+
+[connection signal="pressed" from="MainPanel/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="MainPanel/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="CreditsMenu/CreditsBack" to="." method="_on_CreditsBack_pressed"]

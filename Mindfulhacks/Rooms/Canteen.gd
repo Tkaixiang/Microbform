@@ -2,15 +2,15 @@ extends Node2D
 onready var root = get_tree().current_scene
 onready var anxietyLevel = root.get("anxietyMeter")
 onready var player = $Player
+# onready var playerNoodles = $PlayerNoodles
 onready var SpeechText = $Player/Camera2D/SpeechText
 onready var STMsg = $Player/Camera2D/SpeechText/Msg
 onready var doorDones = [$DoorDone, $DoorDone2, $DoorDone3]
 var initState = 0
 var playerName = "MCB"
 
-var door1Area = false
-var door2Area = false
-var door3Area = false
+var playerNoodlesScene = preload("res://assets/Player/PlayerNoodles.tscn")
+var playerNoodles = playerNoodlesScene.instance()
 
 var bananaDoneState = false
 var noodleStallDoneState = false
@@ -20,9 +20,11 @@ func _ready():
 	SpeechText.connect("allDone", self, "_all_Done")
 	SpeechText.connect("selectedOption", self, "selectedOption")
 	initState = 1
+	
 	SpeechText.setPic("res://assets/Player/playerBase.png")
 	SpeechText.addMsg("After a disastrous bus trip, you finally reach school.")
 	SpeechText.addMsg("~~This is an innocent time skip~~")
+	
 	SpeechText.addMsg("Now, do you find your surroundings suspiciously familiar? ")
 	SpeechText.addMsg("Indeed, this is the source of nightmare, an unholy ground filled with malicious traps and evilness lurking behind pillars, the 18th floor of purgatory.")
 	SpeechText.addMsg("The Canteen.")
@@ -31,8 +33,9 @@ func _ready():
 	SpeechText.addMsg("... your lonesome figure, and are leaning towards deciding that the chocolate bar from the distant vending machine would make for a more wonderful...")
 	SpeechText.addQuestion("...lunch instead.", ["Neither god nor demon shall take away my food!", "My anxiety is all in my head. I'm just buying lunch, what the heck...", "*Brain already short-circuited."])
 	SpeechText.playNext()
-	
+
 func _all_Done(type):
+	
 	if (initState == 1):
 		SpeechText.visible = true
 		STMsg.visible = false
@@ -41,12 +44,23 @@ func _all_Done(type):
 		player.movement = true
 		
 func selectedOption(option):
+	
 	player.movement = true
 	SpeechText.stopNReset()
 
 func _on_Banana_area_entered(area):
 	
-	if (not bananaDoneState):		
+	# var pos = player.global_position
+	get_parent().add_child(playerNoodles)
+	# get_parent().remove_child(player)
+	playerNoodles.position = player.global_position
+	playerNoodles.movement = true
+	# playerNoodles.scale.x = playerNoodles.scale.x * 1.057
+	# playerNoodles.scale.y = playerNoodles.scale.y * 1.207
+	# player.queue_free()
+	self.remove_child(player)
+	
+	if (not bananaDoneState):
 		player.movement = false
 		
 		SpeechText.addMsg("Crash!")
@@ -94,3 +108,7 @@ func _on_NoodleStall_area_entered(area):
 		SpeechText.playNext()
 		
 		noodleStallDoneState = true
+		
+		
+		
+

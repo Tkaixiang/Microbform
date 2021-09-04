@@ -23,7 +23,7 @@ func _ready(): # "_" means a "callback" function
 	canteenGhost.visible = false
 	streetGhost.visible = false
 	animationTree.active = true # Activate animationTree
-	activateSpill()
+	# activateSpill()
 
 const MAX_SPEED = 60
 const ACCELERATION = 280
@@ -83,3 +83,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if (anim_name == "Spill"):
 		spill = false
 		animationTree.active = true
+	
+		

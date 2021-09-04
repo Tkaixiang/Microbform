@@ -3,9 +3,7 @@ onready var root = get_tree().current_scene
 onready var anxietyLevel = root.get("anxietyMeter")
 onready var player = $Player
 # onready var playerNoodles = $PlayerNoodles
-onready var SpeechText = $Player/Camera2D/SpeechText
-onready var STMsg = $Player/Camera2D/SpeechText/Msg
-onready var doorDones = [$DoorDone, $DoorDone2, $DoorDone3]
+onready var SpeechText = $CanvasLayer/SpeechText
 var initState = 0
 var playerName = "MCB"
 
@@ -14,6 +12,7 @@ var playerNoodles = playerNoodlesScene.instance()
 
 var bananaDoneState = false
 var noodleStallDoneState = false
+var spillDoneState = false
 
 func _ready():
 	player.movement = false
@@ -35,30 +34,30 @@ func _ready():
 	SpeechText.playNext()
 
 func _all_Done(type):
-	
-	if (initState == 1):
-		SpeechText.visible = true
-		STMsg.visible = false
-		initState = 2
-	elif (initState == 3):
-		player.movement = true
+	print("Done")
 		
 func selectedOption(option):
 	
+	if noodleStallDoneState:
+		get_parent().add_child(playerNoodles)
+		playerNoodles.position = player.global_position
+		playerNoodles.movement = true
+		self.remove_child(player)
+		
+	if spillDoneState:
+		get_parent().add_child(player)
+		player.position = playerNoodles.global_position
+		player.movement = true
+		self.remove_child(playerNoodles)
+		
+		root.doorDoneState[1] = true
+		root.setAnxietyMeter(anxietyLevel + 0.3)
+		root.gotoScene("res://Rooms/StartingRoom.tscn")
+
 	player.movement = true
 	SpeechText.stopNReset()
 
 func _on_Banana_area_entered(area):
-	
-	# var pos = player.global_position
-	get_parent().add_child(playerNoodles)
-	# get_parent().remove_child(player)
-	playerNoodles.position = player.global_position
-	playerNoodles.movement = true
-	# playerNoodles.scale.x = playerNoodles.scale.x * 1.057
-	# playerNoodles.scale.y = playerNoodles.scale.y * 1.207
-	# player.queue_free()
-	self.remove_child(player)
 	
 	if (not bananaDoneState):
 		player.movement = false
@@ -67,8 +66,6 @@ func _on_Banana_area_entered(area):
 		SpeechText.addMsg("As you are wondering why your world has suddenly turned 180 degrees, a burst of stinging pain registers in your knees.")
 		SpeechText.addMsg("Congratulations on triggering the flag of one of the most embarassing incidents that can happen in a canteen, tripping over a banana peel!")
 		
-		root.setAnxietyMeter(anxietyLevel + 0.1)
-		# should probably be something like player stands up here
 		SpeechText.addMsg("Almost everybody's gazes are on your body, and no, this time it is not your made-up illusion.")
 		SpeechText.addMsg("As you slowly stand up, uncontrollable thoughts such as 'I want to jump into a hole right now' and 'Why am I so stupid goddamnit' pour into...")
 		SpeechText.addMsg("...your mind.")
@@ -82,6 +79,7 @@ func _on_Banana_area_entered(area):
 func _on_NoodleStall_area_entered(area):
 	
 	if bananaDoneState && (not noodleStallDoneState):
+		noodleStallDoneState = true
 		player.movement = false
 		
 		SpeechText.addMsg("Regardless, pigs need to fly and people need to eat.")
@@ -99,16 +97,22 @@ func _on_NoodleStall_area_entered(area):
 		
 		SpeechText.addMsg("You pull out your wallet and examine its content. A sole, hazardly folded fifty-dollar bill lies quietly within.")
 		
-		root.setAnxietyMeter(anxietyLevel + 0.1)
-		
 		SpeechText.addMsg("Your smile freezes over.")
 		SpeechText.addMsg("You attempt to pull out your phone for NETS payment, but realize with horror that the Singtel 4G mobile data network has collapsed yet again.")
 		SpeechText.addMsg("You take a deep breath and hand the fifty-dollar bill to the auntie, who now wears a look you interpret as disdain.")
-		SpeechText.addQuestion("What will you do?", ["In mosquito's voice, apologize wearing the most awkward expression possible.", "Do nothing. What's wrong with a government-distributed 50-dollar bill?", "Do nothing, but wallow in shame on the inside."])
+		SpeechText.addQuestion("What will you do?", ["In a mosquito's voice, apologize wearing the most awkward expression possible.", "Do nothing. What's wrong with a government-distributed 50-dollar bill?", "Do nothing, but wallow in shame on the inside."])
 		SpeechText.playNext()
 		
-		noodleStallDoneState = true
+func _on_Spill_area_entered(area):
+	
+	if bananaDoneState && noodleStallDoneState && (not spillDoneState):
+		spillDoneState = true
+		playerNoodles.movement = false
 		
-		
-		
-
+		playerNoodles.activateSpill()
+				
+		SpeechText.addMsg("Whoosh!")
+		SpeechText.addMsg("Are you pleasantly surprised at the sequence of events?")
+		SpeechText.addMsg("Your first thought is 'There goes the better half of my three dollars fifty cents'.")
+		SpeechText.addQuestion("Your second thought is...", ["Humans are like clouds, and a sense of shame is water vapor.", "Nothing. So tired - you don't even feel the need to dig a hole anymore.", "Bye bye, reputation."])
+		SpeechText.playNext()

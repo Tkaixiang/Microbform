@@ -177,11 +177,11 @@ func _on_Waypoint4_area_entered(area):
 		Player.movement = false
 		progress = 9
 		StrangerHarass.visible = true
-		StrangerHarassAnime.play("walkRight")
+		StrangerHarassAnime.play("walkTowards")
 
 func _on_StrangerPlayer_animation_finished(anim_name):
 	
-	if (anim_name == "walkRight"):
+	if (anim_name == "walkTowards"):
 		SpeechText.setPic("res://assets/Streets/character2.png")
 		SpeechText.addMsg("Stranger: Hold up please! I need help!")
 		SpeechText.addMsg("*You freeze in terror as someone calls out to you*")

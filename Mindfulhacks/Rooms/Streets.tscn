@@ -1,11 +1,12 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/Streets/tiles.png" type="Texture" id=1]
 [ext_resource path="res://assets/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/Speech Text/SpeechText.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/AnxietyMeter/AnxietyMeter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Streets/arrow.png" type="Texture" id=5]
-[ext_resource path="res://assets/Player/character2.png" type="Texture" id=6]
+[ext_resource path="res://assets/Streets/street walk cycle.png" type="Texture" id=6]
+[ext_resource path="res://assets/Skip/Skip.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/Streets/stranger.png" type="Texture" id=8]
 [ext_resource path="res://assets/Streets/Streets.gd" type="Script" id=9]
 
@@ -747,7 +748,7 @@ points = PoolVector2Array( 12.6149, 31.0078, 3.31221, 30.5427, 3.31221, 23.3331,
 [sub_resource type="ConvexPolygonShape2D" id=11]
 points = PoolVector2Array( 12.323, 58.8243, 3.95053, 58.5452, 2.8342, 54.6381, 12.0439, 54.6381 )
 
-[sub_resource type="ConvexPolygonShape2D" id=26]
+[sub_resource type="ConvexPolygonShape2D" id=12]
 points = PoolVector2Array( 12.5097, 43.1957, 3.5791, 43.1957, 3.5791, 37.335, 12.5097, 37.335 )
 
 [sub_resource type="ConvexPolygonShape2D" id=13]
@@ -756,10 +757,10 @@ points = PoolVector2Array( 13.5337, 59.8495, 3.82166, 59.8495, 3.82166, 52.1469,
 [sub_resource type="ConvexPolygonShape2D" id=14]
 points = PoolVector2Array( 13.6088, 60.5193, 3.22696, 60.5193, 3.22696, 51.812, 13.6088, 51.812 )
 
-[sub_resource type="ConvexPolygonShape2D" id=27]
+[sub_resource type="ConvexPolygonShape2D" id=15]
 points = PoolVector2Array( 26.275, 12.4927, 5.62299, 12.4927, 5.62299, 5.23659, 26.275, 5.23659 )
 
-[sub_resource type="ConvexPolygonShape2D" id=28]
+[sub_resource type="ConvexPolygonShape2D" id=16]
 points = PoolVector2Array( 26.275, 11.8422, 6.46021, 11.8422, 6.46021, 5.42332, 26.275, 5.42332 )
 
 [sub_resource type="TileSet" id=17]
@@ -794,14 +795,14 @@ points = PoolVector2Array( 26.275, 11.8422, 6.46021, 11.8422, 6.46021, 5.42332, 
 1/navigation_offset = Vector2( 0, 0 )
 1/shape_offset = Vector2( 0, 0 )
 1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 26 )
+1/shape = SubResource( 12 )
 1/shape_one_way = false
 1/shape_one_way_margin = 1.0
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 26 ),
+"shape": SubResource( 12 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 1/z_index = 0
@@ -857,14 +858,14 @@ points = PoolVector2Array( 26.275, 11.8422, 6.46021, 11.8422, 6.46021, 5.42332, 
 4/navigation_offset = Vector2( 0, 0 )
 4/shape_offset = Vector2( 0, 0 )
 4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-4/shape = SubResource( 27 )
+4/shape = SubResource( 15 )
 4/shape_one_way = false
 4/shape_one_way_margin = 1.0
 4/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 27 ),
+"shape": SubResource( 15 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 4/z_index = 0
@@ -878,75 +879,22 @@ points = PoolVector2Array( 26.275, 11.8422, 6.46021, 11.8422, 6.46021, 5.42332, 
 5/navigation_offset = Vector2( 0, 0 )
 5/shape_offset = Vector2( 0, 0 )
 5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-5/shape = SubResource( 28 )
+5/shape = SubResource( 16 )
 5/shape_one_way = false
 5/shape_one_way_margin = 1.0
 5/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 28 ),
+"shape": SubResource( 16 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 5/z_index = 0
 
-[sub_resource type="Animation" id=18]
-length = 1.5
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 33.339, 80.8626 ), Vector2( 33.339, -52.317 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 4, 5, 6, 7, 4, 5, 6, 7, 4, 5, 6, 7, 4, 5, 6, 7 ]
-}
-
-[sub_resource type="Animation" id=19]
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 94.5174, 91.4908 ), Vector2( 45.5624, 91.4908 ), Vector2( 33.339, 80.8626 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 12, 13, 14, 15, 12, 13, 12, 13, 14, 15, 11 ]
-}
-
-[sub_resource type="RectangleShape2D" id=20]
+[sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 8.12979, 8.8666 )
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=19]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -961,8 +909,38 @@ tracks/0/keys = {
 "values": [ Vector2( 213.37, -55.9008 ), Vector2( 213.37, -49.3203 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=22]
+[sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 10.3244, 9.77115 )
+
+[sub_resource type="Animation" id=21]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 118.779, 65.5294 ), Vector2( 118.779, 72.5294 ) ]
+}
+
+[sub_resource type="Animation" id=22]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 118.779, 65.5294 ), Vector2( 118.779, 72.5294 ) ]
+}
 
 [sub_resource type="Animation" id=23]
 loop = true
@@ -976,26 +954,12 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 118.779, 65.5294 ), Vector2( 118.779, 72.5294 ) ]
-}
-
-[sub_resource type="Animation" id=24]
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 118.779, 65.5294 ), Vector2( 118.779, 72.5294 ) ]
+"values": [ Vector2( 183.814, 68.825 ), Vector2( 183.814, 75.9522 ) ]
 }
 
 [sub_resource type="Animation" id=25]
-loop = true
+resource_name = "walkAway"
+length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -1003,10 +967,50 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 183.814, 68.825 ), Vector2( 183.814, 75.9522 ) ]
+"values": [ Vector2( 33.3393, 76.2429 ), Vector2( 40.2689, -52.7609 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 15, 16, 17, 18, 19, 15, 16, 17, 18, 19, 15, 16, 17, 18, 19 ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "walkTowards"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 91.0946, 91.4908 ), Vector2( 45.5627, 91.4908 ), Vector2( 33.3393, 76.2429 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7, 8, 9, 5, 6, 7, 8, 9, 5, 6, 7, 8, 9, 1 ]
 }
 
 [node name="Streets" type="Node2D"]
@@ -1070,6 +1074,13 @@ margin_right = -108.027
 margin_bottom = 25.4286
 rect_scale = Vector2( 0.67, 0.852 )
 
+[node name="Skip" parent="Player/Camera2D" instance=ExtResource( 7 )]
+margin_left = -106.691
+margin_top = -82.4143
+margin_right = -60.6914
+margin_bottom = -82.4143
+rect_scale = Vector2( 0.463962, 0.53327 )
+
 [node name="StreetLights" type="TileMap" parent="."]
 tile_set = SubResource( 17 )
 cell_size = Vector2( 16, 16 )
@@ -1105,17 +1116,6 @@ offset = Vector2( 286.649, 25.6988 )
 hframes = 5
 vframes = 2
 
-[node name="StrangerHarrassingYou" type="Sprite" parent="."]
-position = Vector2( 94.5174, 91.4908 )
-scale = Vector2( 0.954108, 0.888386 )
-texture = ExtResource( 6 )
-hframes = 16
-frame = 12
-
-[node name="StrangerPlayer" type="AnimationPlayer" parent="StrangerHarrassingYou"]
-anims/walkAway = SubResource( 18 )
-anims/walkRight = SubResource( 19 )
-
 [node name="Waypoint1" type="Area2D" parent="."]
 __meta__ = {
 "_edit_group_": true
@@ -1123,7 +1123,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Waypoint1"]
 position = Vector2( 213.37, -35.6334 )
-shape = SubResource( 20 )
+shape = SubResource( 18 )
 
 [node name="arrow1" type="Sprite" parent="Waypoint1"]
 position = Vector2( 213.37, -53.3338 )
@@ -1134,7 +1134,7 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Waypoint1/arrow1"]
 autoplay = "float"
-anims/float = SubResource( 21 )
+anims/float = SubResource( 19 )
 
 [node name="Waypoint4" type="Area2D" parent="."]
 position = Vector2( -85.4397, 6.47004 )
@@ -1144,7 +1144,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Waypoint4"]
 position = Vector2( 118.779, 74.3926 )
-shape = SubResource( 22 )
+shape = SubResource( 20 )
 
 [node name="arrow2" type="Sprite" parent="Waypoint4"]
 position = Vector2( 118.779, 65.5294 )
@@ -1155,7 +1155,7 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Waypoint4/arrow2"]
 autoplay = "float"
-anims/float = SubResource( 23 )
+anims/float = SubResource( 21 )
 
 [node name="Waypoint3" type="Area2D" parent="."]
 position = Vector2( -20.648, 1.85033 )
@@ -1165,7 +1165,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Waypoint3"]
 position = Vector2( 118.779, 74.3926 )
-shape = SubResource( 22 )
+shape = SubResource( 20 )
 
 [node name="arrow2" type="Sprite" parent="Waypoint3"]
 position = Vector2( 118.779, 71.8427 )
@@ -1176,7 +1176,7 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Waypoint3/arrow2"]
 autoplay = "float"
-anims/float = SubResource( 24 )
+anims/float = SubResource( 22 )
 
 [node name="Waypoint2" type="Area2D" parent="."]
 position = Vector2( 0, -4.3869e-05 )
@@ -1186,7 +1186,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Waypoint2"]
 position = Vector2( 183.814, 81.5198 )
-shape = SubResource( 22 )
+shape = SubResource( 20 )
 
 [node name="arrow2" type="Sprite" parent="Waypoint2"]
 position = Vector2( 183.814, 75.9522 )
@@ -1197,10 +1197,20 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Waypoint2/arrow2"]
 autoplay = "float"
-anims/float = SubResource( 25 )
+anims/float = SubResource( 23 )
 
-[connection signal="animation_finished" from="StrangerHarrassingYou/StrangerPlayer" to="." method="_on_StrangerPlayer_animation_finished"]
+[node name="StrangerHarrassingYou" type="Sprite" parent="."]
+position = Vector2( 33.3393, 76.2429 )
+texture = ExtResource( 6 )
+hframes = 20
+frame = 15
+
+[node name="StrangerPlayer" type="AnimationPlayer" parent="StrangerHarrassingYou"]
+anims/walkAway = SubResource( 25 )
+anims/walkTowards = SubResource( 24 )
+
 [connection signal="area_entered" from="Waypoint1" to="." method="_on_Waypoint1_area_entered"]
 [connection signal="area_entered" from="Waypoint4" to="." method="_on_Waypoint4_area_entered"]
 [connection signal="area_entered" from="Waypoint3" to="." method="_on_Waypoint3_area_entered"]
 [connection signal="area_entered" from="Waypoint2" to="." method="_on_Waypoint2_area_entered"]
+[connection signal="animation_finished" from="StrangerHarrassingYou/StrangerPlayer" to="." method="_on_StrangerPlayer_animation_finished"]

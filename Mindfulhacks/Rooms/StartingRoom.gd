@@ -48,7 +48,7 @@ func selectedOption(option):
 			elif (door2Area):
 				pass
 			elif (door3Area):
-				pass
+				root.gotoScene("res://Rooms/Streets.tscn")
 
 func setDoorDone(number):
 	doorDones[number].visible = true

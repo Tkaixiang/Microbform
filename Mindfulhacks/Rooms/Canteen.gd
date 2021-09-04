@@ -11,9 +11,8 @@ var door1Area = false
 var door2Area = false
 var door3Area = false
 
-var introArea = false
-var introDoneState = false
 var bananaDoneState = false
+var noodleStallDoneState = false
 
 func _ready():
 	player.movement = false
@@ -24,7 +23,7 @@ func _ready():
 	initState = 1
 	SpeechText.setPic("res://assets/Player/playerBase.png")
 	SpeechText.addMsg("After a disastrous bus trip, you finally reach school.")
-	SpeechText.addMsg("~This is an innocent time skip~")
+	SpeechText.addMsg("~~This is an innocent time skip~~")
 	SpeechText.addMsg("Now, do you find your surroundings suspiciously familiar? ")
 	SpeechText.addMsg("Indeed, this is the source of nightmare, an unholy ground filled with malicious traps and evilness lurking behind pillars, the 18th floor of purgatory.")
 	SpeechText.addMsg("The Canteen.")
@@ -104,8 +103,37 @@ func _on_Banana_area_entered(area):
 		SpeechText.addMsg("As you slowly stand up, uncontrollable thoughts such as 'I want to jump into a hole right now' and 'Why am I so stupid goddamnit' pour into...")
 		SpeechText.addMsg("...your mind.")
 		SpeechText.addMsg("It feels as if the stares of the people around you are full of judgement and disdain for your idiocy.")
+		
+		
+		
 		SpeechText.addQuestion("What will you do?", ["Go into panic attack mode.", "Smile. Tripping over things is perfectly normal human behavior.", "Take a deep breath, and continue walking forward. Your stomach is still growling."])
 		SpeechText.playNext()
 		
 		bananaDoneState = true
 
+func _on_NoodleStall_area_entered(area):
+	
+	if bananaDoneState && (not noodleStallDoneState):
+		player.movement = false
+		
+		SpeechText.addMsg("Regardless, pigs need to fly and people need to eat.")
+		SpeechText.addMsg("You suddenly experience an intense sense of longing for pork - particularly the soft, fragrant, absolutely appetizing pork ramen at...")
+		SpeechText.addMsg("...the Japanese store.")
+		SpeechText.addMsg("~~Tick. Tock. Tick. Tock. I'm an innocent clock~~")
+		SpeechText.addMsg("After waiting patiently for ten minutes, you finally find yourself face-to-face with a mouth-watering bowl of steaming noodles.")
+		SpeechText.addMsg("By now, your negative emotions from the fall have mostly dissipated.")
+		
+		SpeechText.addMsg("You heard the auntie saying, 'Yours is three dollars and fifty cents ah.'")
+		SpeechText.addMsg("The auntie's voice sounds as pleasant as that of an angel to you - an angel who can gaze into one's soul and fulfil their utmost desire.")
+		SpeechText.addMsg("For your present self, that desire happens to be eating a hot, tantazing meal.")
+		SpeechText.addMsg("A genuine smile appears on your face, and although you always feel that your smile looks worse than a grimace, the auntie can still see your abnormally...")
+		SpeechText.addMsg("...sincere eyes, right?")
+		
+		SpeechText.addMsg("You pull out your wallet and examine its content. A sole, hazardly folded fifty-dollar bill lies quietly within.")
+		SpeechText.addMsg("Your smile freezes over.")
+		SpeechText.addMsg("You attempt to pull out your phone for NETS payment, but realize with horror that the Singtel 4G mobile data network has collapsed yet again.")
+		SpeechText.addMsg("You take a deep breath and hand the fifty-dollar bill to the auntie, who now wears a look you interpret as disdain.")
+		SpeechText.addQuestion("What will you do?", ["In mosquito's voice, apologize wearing the most awkward expression possible.", "Do nothing. What's wrong with a government-distributed 50-dollar bill?", "Do nothing, but wallow in shame on the inside."])
+		SpeechText.playNext()
+		
+		noodleStallDoneState = true

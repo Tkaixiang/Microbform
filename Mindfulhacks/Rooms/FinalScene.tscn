@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Rooms/FinalScene.gd" type="Script" id=2]
 [ext_resource path="res://assets/AnxietyMeter/AnxietyMeter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Speech Text/SpeechText.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/Fonts/Bigger.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/Player/playerBase.png" type="Texture" id=6]
+[ext_resource path="res://assets/Fonts/ThaleahFat.tres" type="DynamicFont" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.717647, 0.690196, 0, 1 )
 
 [node name="FinalScene" type="Node2D"]
 script = ExtResource( 2 )
@@ -30,3 +36,51 @@ margin_top = 27.2926
 margin_right = -112.437
 margin_bottom = 27.2926
 rect_scale = Vector2( 0.7, 0.932 )
+
+[node name="EndScene" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="EndScene"]
+margin_left = -108.0
+margin_top = -84.0
+margin_right = 114.0
+margin_bottom = 94.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="EndScene"]
+margin_left = -51.6916
+margin_top = -55.0628
+margin_right = 52.3084
+margin_bottom = -30.0628
+custom_fonts/font = ExtResource( 5 )
+text = "The End"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerBase" type="Sprite" parent="EndScene"]
+position = Vector2( -0.154201, 7.36255 )
+texture = ExtResource( 6 )
+
+[node name="Back" type="Button" parent="EndScene"]
+modulate = Color( 0, 0.54902, 0.878431, 1 )
+margin_left = -66.6228
+margin_top = 48.6281
+margin_right = 66.3772
+margin_bottom = 68.6281
+custom_fonts/font = ExtResource( 7 )
+text = "Back to Main Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="EndScene/Back" to="." method="_on_Back_pressed"]

@@ -957,7 +957,7 @@ tracks/0/keys = {
 "values": [ Vector2( 183.814, 68.825 ), Vector2( 183.814, 75.9522 ) ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=24]
 resource_name = "walkAway"
 length = 1.5
 tracks/0/type = "value"
@@ -985,8 +985,7 @@ tracks/1/keys = {
 "values": [ 15, 16, 17, 18, 19, 15, 16, 17, 18, 19, 15, 16, 17, 18, 19 ]
 }
 
-[sub_resource type="Animation" id=24]
-resource_name = "walkTowards"
+[sub_resource type="Animation" id=25]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -1206,8 +1205,8 @@ hframes = 20
 frame = 15
 
 [node name="StrangerPlayer" type="AnimationPlayer" parent="StrangerHarrassingYou"]
-anims/walkAway = SubResource( 25 )
-anims/walkTowards = SubResource( 24 )
+anims/walkAway = SubResource( 24 )
+anims/walkTowards = SubResource( 25 )
 
 [connection signal="area_entered" from="Waypoint1" to="." method="_on_Waypoint1_area_entered"]
 [connection signal="area_entered" from="Waypoint4" to="." method="_on_Waypoint4_area_entered"]

@@ -50,7 +50,7 @@ func _all_Done(type):
 		SpeechText.playNext()
 		progress = 11
 	elif progress == 11:
-		SpeechText.setPic("res://assets/Streets/character2.png")
+		SpeechText.setPic("res://assets/Streets/streetnpc_base.png", Vector2(1.6, 1.6))
 		SpeechText.addMsg("Stranger: Yes please! May I ask if you know where is Gedong View Plaza?")
 		SpeechText.addQuestion("How do you respond?", ["Sorry I am in a rush!", "Sure, let me check my phone's Google Maps!", "Let me check this foldable map I have in my bag!"])
 		progress = 12
@@ -118,7 +118,7 @@ func selectedOption(option):
 		progress = 8
 	elif (progress == 12):
 		if (option == 1):
-			SpeechText.setPic("res://assets/Streets/character2.png")
+			SpeechText.setPic("res://assets/Streets/streetnpc_base.png", Vector2(1.6, 1.6))
 			SpeechText.addMsg("Stranger: Please! There isn't really anyone else around here.")
 			SpeechText.addMsg("*You feel embarrassed and agree to help her*")
 		elif (option == 2):
@@ -130,7 +130,7 @@ func selectedOption(option):
 		SpeechText.playNext()
 		progress = 13
 	elif progress == 14:
-		SpeechText.setPic("res://assets/Streets/character2.png")
+		SpeechText.setPic("res://assets/Streets/streetnpc_base.png",  Vector2(1.6, 1.6))
 		SpeechText.addMsg("*After an awkardly long amount of time, you give the directions to the stranger*")
 		SpeechText.addMsg("Stranger: thank you so much!")
 		SpeechText.playNext()
@@ -182,7 +182,7 @@ func _on_Waypoint4_area_entered(area):
 func _on_StrangerPlayer_animation_finished(anim_name):
 	
 	if (anim_name == "walkTowards"):
-		SpeechText.setPic("res://assets/Streets/character2.png")
+		SpeechText.setPic("res://assets/Streets/streetnpc_base.png", Vector2(1.6, 1.6))
 		SpeechText.addMsg("Stranger: Hold up please! I need help!")
 		SpeechText.addMsg("*You freeze in terror as someone calls out to you*")
 		progress = 10

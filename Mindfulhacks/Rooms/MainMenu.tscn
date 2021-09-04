@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/Fonts/ThaleahFat.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts/Bigger.tres" type="DynamicFont" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/Player/walk cycle.png" type="Texture" id=5]
 [ext_resource path="res://assets/MainMenu/wasd.png" type="Texture" id=6]
 [ext_resource path="res://assets/MainMenu/arrow.png" type="Texture" id=7]
+[ext_resource path="res://assets/Fonts/EvenSmaller.tres" type="DynamicFont" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "PlayerWalk"
@@ -135,23 +136,27 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Instructions"]
-margin_left = 0.300133
-margin_top = 6.35465
-margin_right = 247.3
-margin_bottom = 46.3546
-custom_fonts/font = ExtResource( 4 )
+margin_left = -8.22725
+margin_top = 6.0
+margin_right = 235.773
+margin_bottom = 66.0
+rect_scale = Vector2( 1.00715, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Welcome to MICROBFORM! 
+You will be playing as someone who has anxiety navigating daily life events.
 
-You will be playing as someone who has anxiety navigating daily life events."
+The game consists of 3 rooms each with an event. you may use \"skip room\" if you are in a rush"
+align = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label2" type="Label" parent="Instructions"]
-margin_top = 50.334
-margin_right = 40.0
-margin_bottom = 64.334
+margin_left = -12.2272
+margin_top = 59.0
+margin_right = 75.7728
+margin_bottom = 73.0
 custom_fonts/font = ExtResource( 1 )
 text = "instructions:"
 __meta__ = {
@@ -168,10 +173,10 @@ __meta__ = {
 }
 
 [node name="Label4" type="Label" parent="Instructions"]
-margin_left = 44.29
-margin_top = 77.2432
-margin_right = 113.29
-margin_bottom = 90.2432
+margin_left = 43.29
+margin_top = 84.2432
+margin_right = 187.29
+margin_bottom = 97.2432
 custom_fonts/font = ExtResource( 4 )
 text = "WASD or arrow keys to move"
 __meta__ = {
@@ -179,16 +184,16 @@ __meta__ = {
 }
 
 [node name="wasd" type="Sprite" parent="Instructions"]
-position = Vector2( 20.795, 81.8468 )
+position = Vector2( 19.795, 88.8468 )
 scale = Vector2( 0.0551152, 0.054112 )
 texture = ExtResource( 6 )
 
 [node name="ready" type="Button" parent="Instructions"]
 modulate = Color( 0, 1, 0.976471, 1 )
-margin_left = 42.29
-margin_top = 106.0
-margin_right = 170.29
-margin_bottom = 125.0
+margin_left = 47.8536
+margin_top = 107.834
+margin_right = 175.854
+margin_bottom = 126.834
 focus_mode = 0
 custom_fonts/font = ExtResource( 1 )
 enabled_focus_mode = 0
@@ -198,7 +203,7 @@ __meta__ = {
 }
 
 [node name="arrow" type="Sprite" parent="Instructions"]
-position = Vector2( 213.338, 81.9062 )
+position = Vector2( 212.338, 88.9062 )
 scale = Vector2( 0.0657461, 0.0569403 )
 texture = ExtResource( 7 )
 

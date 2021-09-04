@@ -21,33 +21,34 @@ func _ready():
 	
 func _all_Done(type):
 	if (progress == 1):
-		player.activateGhosts("Bus")
+		player.activateGhosts("bus")
 		SpeechText.addMsg(world.playerName + ": woah--!? You! You’ve been following me this whole time, right? ")
 		SpeechText.addMsg("Driver: yeah, because you couldn’t stop feeling guilty about your bus trip.")
 		SpeechText.addMsg(world.playerName + ": Of course not! Remember when I tried to tap in?")
-		SpeechText.addQuestion("Your response:", ["I must be the only person who doesn’t have my bus card ready before I board!"], ["Actually...it’s not that bad. There wasn’t anyone behind me, so I wasn’t holding anyone back."])
+		SpeechText.addQuestion("Your response:", ["I must be the only person who doesn’t have my bus card ready before I board!", "Actually...it’s not that bad. I wasn’t holding anyone back since no one was behind me"])
 		SpeechText.playNext()
 		progress = 2
 	elif (progress == 3):
 		SpeechText.setPic("res://Rooms/mcb_mildpanic.png")
 		SpeechText.addMsg(world.playerName + ": whew, actually, I guess there’s really nothing to be scared about. Those things could’ve happened to anyone.")
 		SpeechText.playNext()
-		progress == 4
+		progress = 4
 	elif (progress == 4):
-		player.deactiveGhosts("Bus")
-		player.activateGhosts("Canteen")
+		player.deactiveGhosts("bus")
+		player.activateGhosts("canteen")
+		AnxietyMeter.setAnxietyLevel(0.6)
 		SpeechText.setPic("res://Rooms/mcb_panic.png")
 		SpeechText.addMsg(world.playerName + ": I smell...noodles? Ah!! Noodles!! I just spilled that on myself today!!")
 		SpeechText.addMsg("Cook: woah, you’re still thinking about that?")
 		SpeechText.addMsg(world.playerName + ": you! You’ve been following me around as well!?")
 		SpeechText.addMsg(world.playerName + ": and yeah, of course! I can’t believe I started recess by tripping over a banana peel!")
-		SpeechText.addQuestion("Your response: ", ["That bruise I got must have looked really ugly! I probably look really stupid.", "I guess that’s actually the fault of whoever left the banana peel there, in hindsight."])
+		SpeechText.addQuestion("Your response: ", ["That bruise I got must have looked really ugly! I probably look really stupid.", "I guess it's the fault actually lies in whoever left the banana peel there..."])
 		SpeechText.playNext()
 		progress = 5
 	elif (progress == 6):
 		SpeechText.setPic("res://Rooms/mcb_mildpanic.png")
 		SpeechText.addMsg(world.playerName + ": That’s true...but, when I tried to pay for a small bowl of noodles with a fifty dollar bill…")
-		SpeechText.addQuestion("Your response: ", ["That must have made me seem like such a snob! I mean, that’s just showing off!", "But on the bright side, that friend of mine was really nice...I eventually managed to clean myself up in the end, as well."])
+		SpeechText.addQuestion("Your response: ", ["That must have made me seem like such a snob! I mean, that’s just showing off!", "But on the bright side, I eventually managed to clean myself up, as well."])
 		SpeechText.playNext()
 		progress = 7
 	elif (progress == 9):
@@ -57,13 +58,16 @@ func _all_Done(type):
 		progress = 10
 	elif (progress == 10):
 		SpeechText.setPic("res://Rooms/mcb_mildpanic.png")
-		player.deactiveGhosts("Bus")
-		player.activateGhosts("Street")
+		player.deactiveGhosts("canteen")
+		player.activateGhosts("street")
+		AnxietyMeter.setAnxietyLevel(0.3)
 		SpeechText.addMsg(world.playerName + ": wait-- i-it's you... did you end up at the correct place or not!? I’m pretty sure I told you to go the wrong way!!")
-		SpeechText.addQuestion("Your response: ", [" I’m so sorry aaaaaaaaaa I repent for my grave sins with all my mortal possessions", "you don’t look too angry...did you end up at the right place after all?"])
+		SpeechText.addQuestion("Your response: ", [" I’m so sorry aaa I repent for my grave sins!!", "you don’t look too angry...did you end up at the right place after all?"])
 		SpeechText.playNext()
 		progress = 11
 	elif (progress == 12):
+		player.deactiveGhosts("street")
+		AnxietyMeter.setAnxietyLevel(0.0)
 		SpeechText.setPic("res://assets/Player/playerBase.png")
 		SpeechText.addMsg(world.playerName + ": huh...I guess I should have more faith in myself next time, and these strangers as well. After all, being able to provide a bit of help is probably still better than nothing at all.")
 		SpeechText.addMsg(world.playerName + ": even though all those things happened, in the end, I guess I found out what really mattered to me and what didn’t.")
@@ -98,7 +102,7 @@ func selectedOption(option):
 			SpeechText.addMsg(world.playerName + ":But that wasn’t my intention...and I guess it’s easier for the vendors to count money?")
 		SpeechText.addMsg("Cook: that’s right. Actually, did you know a lot of students pay with large bills at the start of the week? Because their parents give them large bills for their allowance.")
 		SpeechText.addMsg(world.playerName + ": Right, right, but...how about when I spilled the noodles!?")
-		SpeechText.addQuestion("Your response: ", ["That was such a waste of money!! And I must have looked like some uncoordinated potato…", "ut on the bright side, that friend of mine was really nice...I eventually managed to clean myself up in the end, as well."])
+		SpeechText.addQuestion("Your response: ", ["That was such a waste of money!! And I must have looked like some uncoordinated potato…", "But on the bright side, I eventually managed to clean myself up, as well."])
 		SpeechText.playNext()
 		progress = 8
 	elif (progress == 8):

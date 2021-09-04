@@ -15,7 +15,6 @@ bg_color = Color( 0.717647, 0.690196, 0, 1 )
 script = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-visible = false
 position = Vector2( -0.631279, 1.81272 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -39,6 +38,7 @@ margin_bottom = 27.2926
 rect_scale = Vector2( 0.7, 0.932 )
 
 [node name="EndScene" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {

@@ -56,7 +56,9 @@ margin_left = 96.2373
 margin_top = 59.9932
 margin_right = 224.237
 margin_bottom = 78.9932
+focus_mode = 0
 custom_fonts/font = ExtResource( 1 )
+enabled_focus_mode = 0
 text = "Start Game"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -68,7 +70,9 @@ margin_left = 96.2373
 margin_top = 90.334
 margin_right = 224.237
 margin_bottom = 109.334
+focus_mode = 0
 custom_fonts/font = ExtResource( 1 )
+enabled_focus_mode = 0
 text = "Credits"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -107,7 +111,9 @@ margin_left = 96.2373
 margin_top = 146.0
 margin_right = 229.237
 margin_bottom = 170.0
+focus_mode = 0
 custom_fonts/font = ExtResource( 1 )
+enabled_focus_mode = 0
 text = "back to main menu"
 __meta__ = {
 "_edit_use_anchors_": false

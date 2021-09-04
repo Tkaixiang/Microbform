@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var root = get_tree().current_scene
-onready var SpeechText = root.find_node("SpeechText")
+onready var SpeechText = root.find_node("SpeechText", true, false)
 onready var questionNumber = 0
 onready var tapCount = 0  # tap count 
 

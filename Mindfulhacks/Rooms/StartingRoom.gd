@@ -44,7 +44,7 @@ func selectedOption(option):
 		SpeechText.stopNReset()
 		if (option == 1):
 			if (door1Area):
-				root.gotoScene("res://Rooms/TestScene.tscn")
+				root.gotoScene("res://Rooms/Bus.tscn")
 			elif (door2Area):
 				pass
 			elif (door3Area):

@@ -255,9 +255,9 @@ zoom = Vector2( 0.6, 0.9 )
 
 [node name="AnxietyMeter" parent="Player/Camera2D" instance=ExtResource( 12 )]
 margin_left = 11.8436
-margin_top = -65.4721
+margin_top = -66.3007
 margin_right = 11.8436
-margin_bottom = -65.4721
+margin_bottom = -66.3007
 rect_scale = Vector2( 0.261429, 0.298159 )
 
 [node name="SpeechText" parent="Player/Camera2D" instance=ExtResource( 6 )]

@@ -103,7 +103,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ "Press \"Enter\" to continue", "Press \"Enter\" to continue.", "Press \"Enter\" to continue..", "Press \"Enter\" to continue..." ]
+"values": [ "Press \"Enter\" or \"Left-Click\" to continue", "Press \"Enter\" or \"Left-Click\" to continue.", "Press \"Enter\" or \"Left-Click\" to continue..", "Press \"Enter\" or \"Left-Click\" to continue..." ]
 }
 
 [node name="SpeechText" type="Control"]
@@ -245,7 +245,6 @@ __meta__ = {
 anims/DisplayMsg&Options = SubResource( 3 )
 
 [node name="Msg" type="Control" parent="."]
-visible = false
 margin_right = 320.0
 margin_bottom = 67.0
 __meta__ = {
@@ -253,13 +252,13 @@ __meta__ = {
 }
 
 [node name="ContinueMsg" type="Label" parent="Msg"]
-margin_left = 178.587
-margin_top = 53.8184
-margin_right = 318.587
-margin_bottom = 64.8184
+margin_left = 94.1196
+margin_top = 52.0
+margin_right = 316.12
+margin_bottom = 63.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.592157, 1, 0.913725, 1 )
-text = "Press \"Enter\" to continue.."
+text = "Press \"Enter\" or \"Left-Click\" to continue"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -44,7 +44,7 @@ func _all_Done(type):
 		Player.movement = true
 		WP4.visible = true
 	elif progress == 10:
-		root.setAnxietyMeter(root.anxietyMeter + 0.05)
+		root.setAnxietyMeter(root.anxietyMeter + 0.05, true)
 		SpeechText.setPic("res://Rooms/mcb_panic.png")
 		SpeechText.addMsg(root.playerName + ": H-help?")
 		SpeechText.playNext()
@@ -56,7 +56,7 @@ func _all_Done(type):
 		progress = 12
 		SpeechText.playNext()
 	elif progress == 13:
-		root.setAnxietyMeter(root.anxietyMeter + 0.05)
+		root.setAnxietyMeter(root.anxietyMeter + 0.05, true)
 		SpeechText.setPic("res://assets/Streets/phone.png", Vector2(0.085, 0.067))
 		SpeechText.addMsg("*You take out your phone to search*")
 		SpeechText.addQuestion("What do you search?", ["Gedong View Plaza", "Gedong Sungei Plaza", "Gedong Gedong Plaza"])
@@ -78,7 +78,7 @@ func _on_Waypoint1_area_entered(area):
 		progress = 3
 		Player.movement = false
 		WP1.visible = false
-		root.setAnxietyMeter(root.anxietyMeter + 0.05)
+		root.setAnxietyMeter(root.anxietyMeter + 0.05, true)
 		SpeechText.setPic("res://Rooms/mcb_mildpanic.png")
 		SpeechText.addMsg("Hmmm... it isn't here...")
 		SpeechText.addMsg("Maybe it is across the street? The house numbers here don't seem right...")
@@ -108,7 +108,7 @@ func selectedOption(option):
 			progress = 6
 		SpeechText.playNext()
 	elif (progress == 7):
-		root.setAnxietyMeter(root.anxietyMeter + 0.05)
+		root.setAnxietyMeter(root.anxietyMeter + 0.05, true)
 		SpeechText.addMsg("MCB Over the Phone: Oh coming up with one of your lame excuses again? Seriously?")
 		SpeechText.addMsg(root.playerName + ": I-I am lost")
 		SpeechText.addMsg("MCB Over the Phone: Oh again? Why didn't you call sooner? Here's the directions")
@@ -136,7 +136,7 @@ func selectedOption(option):
 		SpeechText.playNext()
 		progress = 15
 	elif progress == 16:
-		root.setAnxietyMeter(root.anxietyMeter + 0.05)
+		root.setAnxietyMeter(root.anxietyMeter + 0.05, true)
 		SpeechText.addMsg("You decide to hurry off to the party anyways as you are really running out of time")
 		SpeechText.addMsg("the thought that you might have given the stranger the wrong directions lingers ominously over your head...")
 		SpeechText.playNext()
@@ -147,7 +147,7 @@ func _on_Waypoint2_area_entered(area):
 		progress = 5
 		WP2.visible = false
 		Player.movement = false
-		root.setAnxietyMeter(root.anxietyMeter + 0.05)
+		root.setAnxietyMeter(root.anxietyMeter + 0.05, true)
 		SpeechText.setPic("res://Rooms/mcb_panic.png")
 		SpeechText.addMsg("Ahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
 		SpeechText.addMsg("I seem to be really lost!")

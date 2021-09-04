@@ -22,10 +22,10 @@ func setDoorDone(number):
 	doorDoneState[number] = true
 	startingRoom.setDoorDone(number)
 	
-func setAnxietyMeter(number):
+func setAnxietyMeter(number, showAnim=false):
 	anxietyMeter = number
 	if (meter != null):
-		meter.setAnxietyLevel(anxietyMeter)
+		meter.setAnxietyLevel(anxietyMeter, showAnim)
 	
 	
 func _on_SceneChangeAnime_animation_finished(anim_name):

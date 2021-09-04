@@ -52,5 +52,13 @@ func _on_SceneChangeAnime_animation_finished(anim_name):
 		var meter = currentScene.find_node("AnxietyMeter", true, false)
 		if (meter != null):
 			meter.setAnxietyLevel(anxietyMeter)
+		var player = currentScene.find_node("Player", true, false)
+		if (player != null):
+			if (doorDoneState[0] == true):
+				player.activateGhosts("bus")
+			if (doorDoneState[1] == true):
+				player.activateGhosts("canteen")
+			if (doorDoneState[2] == true):
+				player.activateGhosts("street")
 		
 		SceneChangeAnime.play("FadeIn")

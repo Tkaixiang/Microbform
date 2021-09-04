@@ -1,0 +1,124 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/Player/ghost_bus.png" type="Texture" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "floatDown"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ghost_bus:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "floatLeft"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ghost_bus:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "floatRight"
+length = 0.8
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("ghost_bus:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "floatUp"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ghost_bus:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "floatLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "floatDown"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "floatRight"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "floatUp"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=9]
+blend_point_0/node = SubResource( 5 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 6 )
+blend_point_1/pos = Vector2( 0, 1.2 )
+blend_point_2/node = SubResource( 7 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 8 )
+blend_point_3/pos = Vector2( 0, -1.1 )
+min_space = Vector2( -1, -1.1 )
+max_space = Vector2( 1, 1.2 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachine" id=10]
+states/Float/node = SubResource( 9 )
+states/Float/position = Vector2( 496, 116 )
+start_node = "Float"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=11]
+
+[node name="BusGhost" type="Node2D"]
+
+[node name="ghost_bus" type="Sprite" parent="."]
+scale = Vector2( 0.501362, 0.481835 )
+texture = ExtResource( 1 )
+hframes = 16
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/floatDown = SubResource( 1 )
+anims/floatLeft = SubResource( 2 )
+anims/floatRight = SubResource( 3 )
+anims/floatUp = SubResource( 4 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 10 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 11 )
+parameters/Float/blend_position = Vector2( 0.96, 0.109483 )

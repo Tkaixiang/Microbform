@@ -2,6 +2,7 @@ extends Node2D
 
 var progress = 0
 var tryByYourself = false
+var askStranger = false
 onready var SpeechText = $Player/Camera2D/SpeechText
 onready var Player = $Player
 onready var WP1 = $Waypoint1
@@ -34,12 +35,15 @@ func _all_Done(type):
 	elif (progress == 6 and tryByYourself):
 		Player.movement = true
 		WP3.visible = true
+	elif progress == 8:
+		Player.movement = true
 		
 func _on_Waypoint1_area_entered(area):
 	if (progress == 2):
 		progress = 3
 		Player.movement = false
 		WP1.visible = false
+		SpeechText.setPic("res://Rooms/mcb_mildpanic.png")
 		SpeechText.addMsg("Hmmm... it isn't here...")
 		SpeechText.addMsg("Maybe it is across the street? The house numbers here don't seem right...")
 		SpeechText.addMsg("(*Head to the yellow waypoint across the street*)")
@@ -51,7 +55,7 @@ func selectedOption(option):
 			SpeechText.setPic("res://assets/Streets/phone.png", Vector2(0.085, 0.067))
 			SpeechText.addMsg("You decided to call your friend")
 			SpeechText.addMsg("Just then... your phone rings")
-			SpeechText.addMsg(root.playerName + " WHERE ARE YOUUUUU!! You are LATE with a big fat L")
+			SpeechText.addMsg("MCB Over the Phone: " + root.playerName + " WHERE ARE YOUUUUU!! You are LATE with a big fat L")
 			SpeechText.addMsg("*You get embarrssed and try to come up with an excuse")
 			SpeechText.addQuestion("Choose an excuse:", ["I had a stomache", "My bus broke down", "I ran into sentient AIs created by Elon Musk"])
 			progress = 7
@@ -63,21 +67,26 @@ func selectedOption(option):
 			SpeechText.addMsg("You decide to try and ask a stranger")
 			SpeechText.addMsg("(*Head to the yellow waypoint to the left*)")
 			tryByYourself = true
+			askStranger = true
 		SpeechText.playNext()
 		progress = 6
 		
 	if (progress == 7):
-		SpeechText.addMsg("Oh coming up with one of your lame excuses again? Seriously?")
-		
-			
+		SpeechText.addMsg("MCB Over the Phone: Oh coming up with one of your lame excuses again? Seriously?")
+		SpeechText.addMsg(root.playerName + ": I-I am lost")
+		SpeechText.addMsg("MCB Over the Phone: Oh again? Why didn't you call sooner? Here's the directions")
+		SpeechText.addMsg("*MCB repeats the directions and you thank MCB for helping you")
+		SpeechText.playNext()
+		progress = 8
 
 func _on_Waypoint2_area_entered(area):
 	if (progress == 4):
 		progress = 5
 		WP2.visible = false
 		Player.movement = false
+		SpeechText.setPic("res://Rooms/mcb_panic.png")
 		SpeechText.addMsg("Ahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
-		SpeechText.addMsg("I am seem to be really lost!")
+		SpeechText.addMsg("I seem to be really lost!")
 		SpeechText.addMsg("Should I call my friend for help? But this is soooooooooooooooooo embarrassing!")
 		SpeechText.addMsg("MCB gave some really detailed directions in the whatsapp chat and it seems like most of my friends have already found their way there!")
 		SpeechText.addQuestion("What should I do?", ["Call friend for help", "Continue trying", "Ask a stranger for help"])
@@ -86,11 +95,14 @@ func _on_Waypoint2_area_entered(area):
 func _on_Waypoint3_area_entered(area):
 	if (progress == 6 and tryByYourself):
 		WP3.visible = false
+		Player.movement = false
 		SpeechText.setPic("res://assets/Streets/phone.png", Vector2(0.085, 0.067))
+		if (askStranger):
+			SpeechText.addMsg("Just as you are to approach the stranger, your veins freeze in place as the thought of speaking to someone dawns upon you...")
 		SpeechText.addMsg("Just then... your phone rings")
 		SpeechText.addMsg("*You answer the phone*")
-		SpeechText.addMsg(root.playerName + " WHERE ARE YOUUUUU!! You are LATE with a big fat L")
-		SpeechText.addMsg("*You get embarrssed and try to come up with an excuse")
+		SpeechText.addMsg("MCB Over the Phone: " + root.playerName + " WHERE ARE YOUUUUU!! You are LATE with a big fat L")
+		SpeechText.addMsg("*You get embarrssed and try to come up with an excuse*")
 		SpeechText.addQuestion("Choose an excuse:", ["I had a stomache", "My bus broke down", "I ran into sentient AIs created by Elon Musk"])		
 		SpeechText.playNext()
 		progress = 7

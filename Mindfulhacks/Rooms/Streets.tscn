@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/Streets/tiles.png" type="Texture" id=1]
 [ext_resource path="res://assets/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/Speech Text/SpeechText.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/AnxietyMeter/AnxietyMeter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Streets/arrow.png" type="Texture" id=5]
+[ext_resource path="res://assets/Player/character2.png" type="Texture" id=6]
 [ext_resource path="res://assets/Streets/stranger.png" type="Texture" id=8]
 [ext_resource path="res://assets/Streets/Streets.gd" type="Script" id=9]
 
@@ -902,6 +903,22 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 13.0381, 13.0578 )
 
+[sub_resource type="Animation" id=24]
+resource_name = "float"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 118.779, 65.5294 ), Vector2( 118.779, 72.5294 ) ]
+}
+
 [sub_resource type="Animation" id=23]
 resource_name = "float"
 loop = true
@@ -932,6 +949,21 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 183.814, 68.825 ), Vector2( 183.814, 75.9522 ) ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "walkRight"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 10.0174, 69.6221 ) ]
 }
 
 [node name="Streets" type="Node2D"]
@@ -1008,6 +1040,9 @@ hframes = 5
 vframes = 2
 
 [node name="Waypoint1" type="Area2D" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Waypoint1"]
 position = Vector2( 213.37, -35.6334 )
@@ -1024,8 +1059,32 @@ frame = 3
 autoplay = "float"
 anims/float = SubResource( 21 )
 
+[node name="Waypoint4" type="Area2D" parent="."]
+position = Vector2( -85.4397, 6.47004 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Waypoint4"]
+position = Vector2( 118.779, 74.3926 )
+shape = SubResource( 20 )
+
+[node name="arrow2" type="Sprite" parent="Waypoint4"]
+position = Vector2( 118.779, 71.8427 )
+scale = Vector2( 0.611168, 0.521142 )
+texture = ExtResource( 5 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Waypoint4/arrow2"]
+autoplay = "float"
+anims/float = SubResource( 24 )
+
 [node name="Waypoint3" type="Area2D" parent="."]
-position = Vector2( -17, 0 )
+position = Vector2( -20.648, 1.85033 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Waypoint3"]
 position = Vector2( 118.779, 74.3926 )
@@ -1043,6 +1102,9 @@ autoplay = "float"
 anims/float = SubResource( 23 )
 
 [node name="Waypoint2" type="Area2D" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Waypoint2"]
 position = Vector2( 183.814, 81.5198 )
@@ -1059,6 +1121,17 @@ frame = 3
 autoplay = "float"
 anims/float = SubResource( 22 )
 
+[node name="character2" type="Sprite" parent="."]
+position = Vector2( 110.354, 91.4908 )
+scale = Vector2( 0.954108, 0.888386 )
+texture = ExtResource( 6 )
+hframes = 16
+frame = 12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="character2"]
+anims/walkRight = SubResource( 25 )
+
 [connection signal="area_entered" from="Waypoint1" to="." method="_on_Waypoint1_area_entered"]
+[connection signal="area_entered" from="Waypoint4" to="." method="_on_Waypoint3_area_entered"]
 [connection signal="area_entered" from="Waypoint3" to="." method="_on_Waypoint3_area_entered"]
 [connection signal="area_entered" from="Waypoint2" to="." method="_on_Waypoint2_area_entered"]

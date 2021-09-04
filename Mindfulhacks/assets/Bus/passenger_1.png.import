@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/NAY.png-40a7c589aa8a8e2aa5bbbf5edc6897a5.stex"
+path="res://.import/passenger_1.png-44f18f71c725b0c7567c842ad2e46b72.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Bus/NAY.png"
-dest_files=[ "res://.import/NAY.png-40a7c589aa8a8e2aa5bbbf5edc6897a5.stex" ]
+source_file="res://assets/Bus/passenger_1.png"
+dest_files=[ "res://.import/passenger_1.png-44f18f71c725b0c7567c842ad2e46b72.stex" ]
 
 [params]
 

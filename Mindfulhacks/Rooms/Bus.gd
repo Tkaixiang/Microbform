@@ -4,6 +4,11 @@ onready var root = get_tree().current_scene
 onready var SpeechText = root.find_node("SpeechText", true, false)
 onready var questionNumber = 0
 onready var tapCount = 0  # tap count 
+onready var timer = get_node("CardReaderTimer")
+onready var anxietyLevel = root.get("anxietyMeter")
+
+
+### TODO: NEED TO INCREMENT ANXIETY METER VALUE IN ROOM EXIT SEQUENCE 
 
 func _ready():
 	SpeechText.connect("allDone", self, "_all_Done")
@@ -16,14 +21,14 @@ func _all_Done(type):
 	print("Done")
 
 func _on_CardReader_area_entered(area):
-	
 	# Sets the textbox image
 	# Drag and drop the asset here to get the exact string path  
-	SpeechText.setPic("res://assets/Bus/wallet_missing.png") 
 	
+	if root.doorDoneState[0] == false: 
 	# Start of interaction with card reader 
-	scene_1() 
-	SpeechText.playNext()
+		scene_1() 
+		SpeechText.playNext()
+	
 
 func _on_CardReader_area_exited(area):
 	questionNumber = 0 # Player progress should be saved hopefully 
@@ -126,6 +131,7 @@ func selectedOption(option):
 # Creating functions for each scene because it's too confusing uwu 
 func scene_1(): 
 	questionNumber = 1
+	SpeechText.setPic("res://assets/Bus/wallet_missing.png")
 	SpeechText.addQuestion("You're on a bus! Time to pull out your wallet", ["Check left pocket", "Check right pocket", "Check bag"])
 
 func scene_2(): 
@@ -149,7 +155,6 @@ func scene_6():
 	questionNumber = 6
 	SpeechText.setPic("res://assets/Bus/wallet.png")
 	SpeechText.addMsg("You've found your wallet! You pull it out with a sigh of relief.")
-	SpeechText.setPic("res://assets/Bus/mmm.png")
 	SpeechText.addQuestion("Now, better get tapping.", ["Tap wallet against scanner"])
 
 func scene_7(): 
@@ -158,13 +163,15 @@ func scene_7():
 
 func scene_8(): 
 	questionNumber = 8
-	SpeechText.setPic("res://assets/Bus/nay.png")
-	SpeechText.setPic("res://assets/Bus/mmm.png")
 	SpeechText.addQuestion("BUZZ. Invalid card.", ["Try again, but press harder this time", "Take EZ-link card out"])
+	SpeechText.setPic("res://assets/Bus/NAY.png")
+	start_timer()
 	
 func scene_9(): 
 	questionNumber = 9
 	SpeechText.addQuestion("Mmm...still nothing...", ["Tap card again, but this time at an angle", "Take EZ-link card out"])
+	SpeechText.setPic("res://assets/Bus/NAY.png")
+	start_timer()
 
 func scene_10(): 
 	questionNumber = 10
@@ -180,19 +187,29 @@ func scene_12():
 
 func scene_13(): 
 	questionNumber = 13
+	SpeechText.setPic("res://assets/Bus/YAY.png")
 	SpeechText.addMsg("It's out! You tap your wallet against the card reader and it flashes the card value screen of success.")
 
+	root.doorDoneState[0] = true 
+	root.setAnxietyMeter(anxietyLevel + 0.1)
+	
 func scene_14(): 
 	questionNumber = 14
 	SpeechText.addQuestion("Still nope.", ["Keep tapping", "Take EZ-link card out"])
+	SpeechText.setPic("res://assets/Bus/NAY.png")
+	start_timer()
 
 func scene_15(): 
 	questionNumber = 15
 	SpeechText.addQuestion("ArghhHHHHHHHh.", ["There's no going back. Tap card."])
+	SpeechText.setPic("res://assets/Bus/NAY.png")
+	start_timer()
 
 func scene_16(): 
 	questionNumber = 16
 	SpeechText.addQuestion("...", ["Tap card."])
+	SpeechText.setPic("res://assets/Bus/NAY.png")
+	start_timer()
 
 func scene_17(): 
 	questionNumber = 17
@@ -201,7 +218,30 @@ func scene_17():
 		SpeechText.addQuestion("...", ["Tap card."])
 	else: 
 		SpeechText.addQuestion("...", ["Tap card.", "TAP. CARD."])
+	SpeechText.setPic("res://assets/Bus/NAY.png")
+	start_timer()
 
 func scene_18(): 
 	questionNumber = 18
+	SpeechText.setPic("res://assets/Bus/YAY.png")
 	SpeechText.addMsg("OH THANK THE HEAVENS. The sweet beep of success...")
+	
+	root.doorDoneState[0] = true 
+	root.setAnxietyMeter(anxietyLevel + 0.1)
+
+
+func start_timer(): 
+	timer.connect("timeout",self,"_on_timer_timeout") 
+	#timeout is what says in docs, in signals
+	#self is who respond to the callback
+	#_on_timer_timeout is the callback, can have any name
+	timer.set_wait_time(1)
+	timer.start() #to start
+
+func _on_timer_timeout():
+	SpeechText.setPic("res://assets/Bus/okay.png")
+	timer.stop() 
+
+# Bus exit 
+func _on_right_area_entered(area):
+	root.gotoScene("res://Rooms/BusOut.tscn")

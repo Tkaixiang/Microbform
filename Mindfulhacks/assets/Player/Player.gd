@@ -36,6 +36,14 @@ func activateGhosts(ghost):
 		canteenGhost.visible = true
 	elif (ghost == "street"):
 		streetGhost.visible = true
+	
+func deactiveGhosts(ghost):
+	if (ghost == "bus"):
+		busGhost.visible = false
+	elif (ghost == "canteen"):
+		canteenGhost.visible = false
+	elif (ghost == "street"):
+		streetGhost.visible = false
 
 # Runs every single "physics frame"
 func _physics_process(delta): # Delta is how long the last frame took to process

@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/InteractBush.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Speech Text/SpeechText.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Bus/bus interior.png" type="Texture" id=4]
+[ext_resource path="res://Rooms/Bus.gd" type="Script" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 208, 24 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 112 )
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 22.3101
+height = 0.0
+
+[node name="BusScene" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SpeechText" parent="CanvasLayer" instance=ExtResource( 3 )]
+visible = false
+use_parent_material = true
+margin_left = -0.529739
+margin_top = 106.119
+margin_right = -0.529724
+margin_bottom = 108.039
+rect_scale = Vector2( 0.993637, 1.08811 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="bus interior" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 208, 89.6389 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
+[node name="bottom" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 206.74, 203.78 )
+shape = SubResource( 1 )
+
+[node name="top" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 208, 96 )
+shape = SubResource( 1 )
+
+[node name="left" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -16.63, 121.449 )
+shape = SubResource( 2 )
+
+[node name="right" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 432, 112 )
+shape = SubResource( 2 )
+
+[node name="InteractBush" parent="." instance=ExtResource( 1 )]
+position = Vector2( 344, 152 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 63.6472, 112.676 )
+scale = Vector2( 3.06442, 2.2579 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( -3.8147e-06, -10.6293 )
+scale = Vector2( 0.997433, 0.967831 )
+current = true
+limit_left = 0
+limit_right = 410
+
+[node name="CardReader" type="Area2D" parent="."]
+position = Vector2( -7.62939e-06, -7.62939e-06 )
+scale = Vector2( 1, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardReader"]
+position = Vector2( 122.548, 128.378 )
+shape = SubResource( 3 )
+
+[connection signal="area_entered" from="CardReader" to="." method="_on_CardReader_area_entered"]
+[connection signal="area_exited" from="CardReader" to="." method="_on_CardReader_area_exited"]

@@ -7,6 +7,7 @@ onready var SpeechText = root.find_node("SpeechText", true, false)
 ### TODO: NEED TO INCREMENT ANXIETY METER VALUE IN ROOM EXIT SEQUENCE 
 
 func _ready():
+	root.setDoorDone(0)
 	SpeechText.connect("allDone", self, "_all_Done")
 	SpeechText.connect("selectedOption", self, "selectedOption")
 	# Connect signals
@@ -30,7 +31,7 @@ func _on_Area2D_mouse_exited():
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		root.gotoScene("res://Rooms/StartingRoom.tscn")
-		root.setDoorDone(0)
+		
 
 
 func _on_right2_area_entered(area):

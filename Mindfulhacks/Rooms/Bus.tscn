@@ -115,6 +115,7 @@ texture = ExtResource( 7 )
 [node name="music_dude" type="AnimatedSprite" parent="StaticBody2D"]
 position = Vector2( 317.475, 61.472 )
 frames = SubResource( 3 )
+frame = 1
 playing = true
 
 [node name="right" type="Area2D" parent="StaticBody2D"]

@@ -26,6 +26,16 @@ extents = Vector2( 1.11713, 16.2195 )
 [node name="Canteen" type="Node2D"]
 script = ExtResource( 4 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SpeechText" parent="CanvasLayer" instance=ExtResource( 1 )]
+use_parent_material = true
+margin_left = -0.529739
+margin_top = 106.119
+margin_right = -0.529724
+margin_bottom = 108.039
+rect_scale = Vector2( 0.993637, 1.08811 )
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
@@ -69,6 +79,7 @@ margin_bottom = -65.4721
 rect_scale = Vector2( 0.261429, 0.298159 )
 
 [node name="Banana" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Banana"]
 position = Vector2( 59.0615, 76.0391 )
@@ -86,16 +97,6 @@ shape = SubResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spill"]
 position = Vector2( 135.194, 79.015 )
 shape = SubResource( 6 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="SpeechText" parent="CanvasLayer" instance=ExtResource( 1 )]
-use_parent_material = true
-margin_left = -0.529739
-margin_top = 106.119
-margin_right = -0.529724
-margin_bottom = 108.039
-rect_scale = Vector2( 0.993637, 1.08811 )
 
 [connection signal="area_entered" from="Banana" to="." method="_on_Banana_area_entered"]
 [connection signal="area_entered" from="NoodleStall" to="." method="_on_NoodleStall_area_entered"]

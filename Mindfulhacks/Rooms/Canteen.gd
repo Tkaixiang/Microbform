@@ -2,6 +2,7 @@ extends Node2D
 onready var root = get_tree().current_scene
 onready var anxietyLevel = root.get("anxietyMeter")
 onready var player = $Player
+onready var canteen_player = $CanteenPlayer
 # onready var playerNoodles = $PlayerNoodles
 onready var SpeechText = $CanvasLayer/SpeechText
 var initState = 0
@@ -13,6 +14,8 @@ var playerNoodles = playerNoodlesScene.instance()
 var bananaDoneState = false
 var noodleStallDoneState = false
 var spillDoneState = false
+
+var already_added = false 
 
 func _ready():
 	player.movement = false
@@ -38,24 +41,30 @@ func _all_Done(type):
 		
 func selectedOption(option):
 	
-	if noodleStallDoneState:
+	if noodleStallDoneState && already_added == false:  
+		already_added = true 
+		
 		get_parent().add_child(playerNoodles)
 		playerNoodles.position = player.global_position
 		playerNoodles.movement = true
 		self.remove_child(player)
 		
+		
 	if spillDoneState:
-		get_parent().add_child(player)
+		get_parent().add_child(canteen_player)
 		player.position = playerNoodles.global_position
 		player.movement = true
-		self.remove_child(playerNoodles)
+		get_parent().remove_child(playerNoodles)
 		
-		root.doorDoneState[1] = true
-		root.setAnxietyMeter(anxietyLevel + 0.3)
-		root.gotoScene("res://Rooms/StartingRoom.tscn")
+		exit_sequence()
 
 	player.movement = true
 	SpeechText.stopNReset()
+
+func exit_sequence(): 
+	root.doorDoneState[1] = true
+	root.setAnxietyMeter(anxietyLevel + 0.3)
+	root.gotoScene("res://Rooms/StartingRoom.tscn")
 
 func _on_Banana_area_entered(area):
 	

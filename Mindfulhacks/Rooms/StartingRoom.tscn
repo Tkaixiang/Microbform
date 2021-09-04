@@ -13,13 +13,7 @@
 [ext_resource path="res://assets/StartingRoom/street door.png" type="Texture" id=11]
 [ext_resource path="res://assets/AnxietyMeter/AnxietyMeter.tscn" type="PackedScene" id=12]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 159.137, 21.868 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 3.526, 50.0494 )
-
-[sub_resource type="TileSet" id=3]
+[sub_resource type="TileSet" id=1]
 0/name = "interiorPack.png 0"
 0/texture = ExtResource( 10 )
 0/tex_offset = Vector2( 0, 0 )
@@ -77,6 +71,12 @@ extents = Vector2( 3.526, 50.0494 )
 3/shapes = [  ]
 3/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 159.137, 21.868 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 3.526, 50.0494 )
+
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 19.8454, 8.6911 )
 
@@ -108,25 +108,25 @@ position = Vector2( 291.454, 48.3693 )
 scale = Vector2( 0.459707, 0.643537 )
 texture = ExtResource( 11 )
 
-[node name="TopLeft" type="CollisionPolygon2D" parent="StaticBody2D"]
-scale = Vector2( 0.890059, 0.992668 )
-polygon = PoolVector2Array( 0.207684, 97.5393, 15.3438, 65.1648, 359.559, 65.7345, 359.138, 0.831429, 0.207687, 0.415789 )
-
-[node name="Bottom" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 160.191, 119.828 )
-shape = SubResource( 1 )
-
-[node name="Right" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 322.136, 76.0391 )
-shape = SubResource( 2 )
-
 [node name="InteriorDeco" type="TileMap" parent="."]
 position = Vector2( -59.173, 101 )
 scale = Vector2( 0.591774, 0.894276 )
-tile_set = SubResource( 3 )
+tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -327670, 1, 0, -327667, 2, 0, -327664, 1, 0, -196588, 3, 0, -196582, 3, 0, -196575, 3, 0, -196569, 3, 0 )
+
+[node name="TopLeft" type="CollisionPolygon2D" parent="."]
+scale = Vector2( 0.890059, 0.992668 )
+polygon = PoolVector2Array( 0.207684, 97.5393, 15.3438, 65.1648, 359.559, 65.7345, 359.138, 0.831429, 0.207687, 0.415789 )
+
+[node name="Bottom" type="CollisionShape2D" parent="."]
+position = Vector2( 160.191, 119.828 )
+shape = SubResource( 2 )
+
+[node name="Right" type="CollisionShape2D" parent="."]
+position = Vector2( 322.136, 76.0391 )
+shape = SubResource( 3 )
 
 [node name="Door1" type="Area2D" parent="."]
 scale = Vector2( 0.890059, 0.992668 )

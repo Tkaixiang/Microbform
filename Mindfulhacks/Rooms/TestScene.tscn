@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Speech Text/SpeechText.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/InteractBush.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/AnxietyMeter/AnxietyMeter.tscn" type="PackedScene" id=4]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="InteractBush" parent="." instance=ExtResource( 3 )]
+position = Vector2( 80, 96 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 144, 96 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+
+[node name="AnxietyMeter" parent="Player/Camera2D" instance=ExtResource( 4 )]
+margin_left = 39.9949
+margin_top = -87.6108
+margin_right = 39.9949
+margin_bottom = -87.6108
+rect_scale = Vector2( 0.404785, 0.514286 )
+
+[node name="SpeechText" parent="Player/Camera2D" instance=ExtResource( 2 )]
+margin_left = -160.0
+margin_top = 6.0
+margin_right = -160.0
+margin_bottom = 6.0

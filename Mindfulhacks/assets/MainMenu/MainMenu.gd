@@ -12,8 +12,8 @@ func _ready():
 	
 func _on_Start_pressed():
 	Instructions.visible = true
-	#root.gotoScene("res://Rooms/StartingRoom.tscn")
-	
+	MainPanel.visible = false
+
 func _on_Credits_pressed():
 	MainPanel.visible = false
 	CreditsMenu.visible = true
@@ -21,3 +21,6 @@ func _on_Credits_pressed():
 func _on_CreditsBack_pressed():
 	MainPanel.visible = true
 	CreditsMenu.visible = false
+
+func _on_ready_pressed():
+	root.gotoScene("res://Rooms/StartingRoom.tscn")

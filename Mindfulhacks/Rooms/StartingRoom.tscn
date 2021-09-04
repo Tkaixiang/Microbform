@@ -346,7 +346,7 @@ __meta__ = {
 }
 
 [node name="arrow" type="Sprite" parent="."]
-position = Vector2( 97.7007, 56.4713 )
+position = Vector2( 99.6545, 56.4713 )
 scale = Vector2( 0.529863, 0.450404 )
 texture = ExtResource( 13 )
 hframes = 4

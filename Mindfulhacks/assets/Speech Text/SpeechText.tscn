@@ -1,0 +1,294 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/Speech Text/SpeechText.gd" type="Script" id=1]
+[ext_resource path="res://assets/Fonts/ThaleahFat.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/Fonts/Smaller.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/Bush.png" type="Texture" id=4]
+[ext_resource path="res://assets/Fonts/EvenSmaller.tres" type="DynamicFont" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.215686, 0.215686, 0.215686, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+bg_color = Color( 0.431373, 0.431373, 0.431373, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="Animation" id=3]
+resource_name = "DisplayMsg&Options"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Text:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Option1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Option2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Option3:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.1, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Text:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ContinueMsg:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "Press \"Enter\" to continue", "Press \"Enter\" to continue.", "Press \"Enter\" to continue..", "Press \"Enter\" to continue..." ]
+}
+
+[node name="SpeechText" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 0.356
+margin_bottom = -12.08
+rect_scale = Vector2( 0.996715, 1.24493 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+margin_left = -1.0033
+margin_right = 322.997
+margin_bottom = 67.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Picture" type="Sprite" parent="."]
+position = Vector2( 298.481, 15.2293 )
+scale = Vector2( 1.22277, 0.901629 )
+texture = ExtResource( 4 )
+
+[node name="SelectOption" type="Control" parent="."]
+margin_right = 320.0
+margin_bottom = 67.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="SelectOption"]
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 279.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 2 )
+text = "What will you do? Choose an option now or elseeeeeeeeeeeeeeeeeeeeeeeeeeee"
+autowrap = true
+clip_text = true
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Option1" type="Button" parent="SelectOption"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 4.11987e-05
+anchor_top = -0.000747567
+anchor_right = 4.11987e-05
+anchor_bottom = -0.000747567
+margin_left = 1.98022
+margin_top = 29.0501
+margin_right = 103.98
+margin_bottom = 65.0501
+custom_styles/normal = SubResource( 2 )
+clip_text = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SelectOption/Option1"]
+margin_left = 3.0
+margin_top = 1.0
+margin_right = 102.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 5 )
+text = "THIS IS A REALLY LONG MESSAGE I AM TESTING THE LENGTH OF THIS SHIT YAY ITS 4 LINES"
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Option2" type="Button" parent="SelectOption"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 4.11987e-05
+anchor_top = -0.000747567
+anchor_right = 4.11987e-05
+anchor_bottom = -0.000747567
+margin_left = 109.346
+margin_top = 28.9674
+margin_right = 211.346
+margin_bottom = 64.9674
+custom_styles/normal = SubResource( 2 )
+clip_text = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SelectOption/Option2"]
+margin_left = 3.0
+margin_top = 1.0
+margin_right = 102.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 5 )
+text = "Run to the bathoom and cry over your failures ;ccccccccc. really sad. real sad"
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Option3" type="Button" parent="SelectOption"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 4.11987e-05
+anchor_top = -0.000747567
+anchor_right = 4.11987e-05
+anchor_bottom = -0.000747567
+margin_left = 215.695
+margin_top = 28.9674
+margin_right = 317.695
+margin_bottom = 64.9674
+custom_styles/normal = SubResource( 2 )
+clip_text = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SelectOption/Option3"]
+margin_left = 3.0
+margin_top = 1.0
+margin_right = 102.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 5 )
+text = "Run to the bathoom and cry over your failures ;ccccccccc. really sad. real sad"
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectOptionAnimation" type="AnimationPlayer" parent="SelectOption"]
+anims/DisplayMsg&Options = SubResource( 3 )
+
+[node name="Msg" type="Control" parent="."]
+visible = false
+margin_right = 320.0
+margin_bottom = 67.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContinueMsg" type="Label" parent="Msg"]
+margin_left = 178.587
+margin_top = 53.8184
+margin_right = 318.587
+margin_bottom = 64.8184
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.592157, 1, 0.913725, 1 )
+text = "Press \"Enter\" to continue.."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="Msg"]
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 279.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "What will you do? Choose an option now or elseeeeeeeeeeeeeeeeeeeeeeeeeeee
+s
+s"
+autowrap = true
+clip_text = true
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimePlayer" type="AnimationPlayer" parent="Msg"]
+anims/RevealText = SubResource( 4 )
+
+[node name="ContinuePlayer" type="AnimationPlayer" parent="Msg"]
+autoplay = "ContinueMsg"
+anims/ContinueMsg = SubResource( 5 )
+
+[connection signal="pressed" from="SelectOption/Option1" to="." method="_on_Option1_pressed"]
+[connection signal="pressed" from="SelectOption/Option2" to="." method="_on_Option2_pressed"]
+[connection signal="pressed" from="SelectOption/Option3" to="." method="_on_Option3_pressed"]
+[connection signal="animation_finished" from="SelectOption/SelectOptionAnimation" to="." method="_on_SelectOptionAnimation_animation_finished"]
+[connection signal="animation_finished" from="Msg/AnimePlayer" to="." method="_on_AnimePlayer_animation_finished"]

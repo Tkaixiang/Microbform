@@ -28,7 +28,16 @@ func _all_Done(type):
 		progress = 2
 	elif (progress == 3):
 		SpeechText.setPic("res://Rooms/mcb_mildpanic.png")
-		SpeechText.addMsg("Driver: see? There are plenty of people like you. Some of them even deliberately try not to pay.")
+		SpeechText.addMsg(world.playerName + ": whew, actually, I guess there’s really nothing to be scared about. Those things could’ve happened to anyone.")
+		SpeechText.playNext()
+		progress == 4
+	elif (progress == 4):
+		player.deactiveGhosts("Bus")
+		player.activateGhosts("Canteen")
+		SpeechText.addMsg(world.playerName + ": I smell...noodles? Ah!! Noodles!! I just spilled that on myself today!!")
+		SpeechText.addMsg("Cook: woah, you’re still thinking about that?")
+		SpeechText.addMsg(world.playerName + ": you! You’ve been following me around as well!?")
+		SpeechText.addMsg(world.playerName + ": and yeah, of course! I can’t believe I started recess by tripping over a banana peel!")
 		
 func selectedOption(option):
 	if (progress == 2):

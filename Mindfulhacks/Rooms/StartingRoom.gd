@@ -6,6 +6,7 @@ onready var SpeechText = $Player/Camera2D/SpeechText
 onready var enterName = $Player/Camera2D/SpeechText/EnterName
 onready var STMsg = $Player/Camera2D/SpeechText/Msg
 onready var tooShort = $Player/Camera2D/SpeechText/EnterName/NameTooShort
+onready var lineEdit = $Player/Camera2D/SpeechText/EnterName/LineEdit
 onready var doorDones = [$DoorDone, $DoorDone2, $DoorDone3]
 var initState = 0
 var playerName = "MCB"
@@ -34,6 +35,7 @@ func _all_Done(type):
 		SpeechText.visible = true
 		enterName.visible = true
 		STMsg.visible = false
+		lineEdit.grab_focus()
 		initState = 2
 	elif (initState == 3):
 		player.movement = true
@@ -46,7 +48,7 @@ func selectedOption(option):
 			if (door1Area):
 				root.gotoScene("res://Rooms/Bus.tscn")
 			elif (door2Area):
-				pass
+				root.gotoScene("res://Rooms/Canteen.tscn")
 			elif (door3Area):
 				root.gotoScene("res://Rooms/Streets.tscn")
 
@@ -78,7 +80,7 @@ func _on_Door3_area_entered(area):
 	door3Area = true
 	
 	if (not root.doorDoneState[2]):
-		SpeechText.addMsg("It's my friend MCB's birthday! Join me as we are going on a trip in our favourite rocket shi- I mean, on a trip to the party!")
+		SpeechText.addMsg("It's my friend MCB's birthday! Let's head to the party!")
 		SpeechText.addQuestion("Head to the party?", ["Yes", "No"])
 		SpeechText.playNext()
 func _on_Door3_area_exited(area):
@@ -87,7 +89,7 @@ func _on_Door3_area_exited(area):
 
 func _on_LineEdit_text_entered(new_text):
 	if (initState == 2):
-		if (len(new_text) < 3):
+		if (len(new_text) < 1):
 			tooShort.visible = true
 		else:
 			tooShort.visible = false

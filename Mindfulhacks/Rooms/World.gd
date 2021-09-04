@@ -6,7 +6,9 @@ onready var SceneChangeAnime = $SceneChangeAnime
 var playerName = ""
 var scenePath = ""
 var doorDoneState = [false, false, false]
+var doorDones = 0
 var anxietyMeter = 0.1
+var meter = null
 
 func _ready():
 	gotoScene("res://Rooms/MainMenu.tscn")
@@ -18,13 +20,14 @@ func gotoScene(path):
 
 # Number: 0-2
 func setDoorDone(number):
+	doorDones += 1
 	doorDoneState[number] = true
 	startingRoom.setDoorDone(number)
 	
-func setAnxietyMeter(number):
+func setAnxietyMeter(number, showAnim=false):
 	anxietyMeter = number
-	var meter = self.find_node("AnxietyMeter", true, false)
-	meter.setAnxietyLevel(anxietyMeter)
+	if (meter != null):
+		meter.setAnxietyLevel(anxietyMeter, showAnim)
 	
 	
 func _on_SceneChangeAnime_animation_finished(anim_name):
@@ -34,11 +37,19 @@ func _on_SceneChangeAnime_animation_finished(anim_name):
 		# Restore starting room scene instead of re-instancing it
 		if (scenePath.find("StartingRoom") != -1):
 			
-			if (startingRoom != null):
-				self.add_child(startingRoom)
-				currentScene = startingRoom
+			
+			if (doorDones != 3):
+				if (startingRoom != null):
+					self.add_child(startingRoom)
+					currentScene = startingRoom
+				else:
+					var scene = load(scenePath)
+					var sceneInstance = scene.instance()
+					startingRoom = sceneInstance
+					currentScene = sceneInstance
+					self.add_child(sceneInstance)
 			else:
-				var scene = load(scenePath)
+				var scene = load("res://Rooms/FinalScene.tscn")
 				var sceneInstance = scene.instance()
 				startingRoom = sceneInstance
 				currentScene = sceneInstance
@@ -49,7 +60,7 @@ func _on_SceneChangeAnime_animation_finished(anim_name):
 			self.add_child(sceneInstance)
 			currentScene = sceneInstance
 		
-		var meter = currentScene.find_node("AnxietyMeter", true, false)
+		meter = currentScene.find_node("AnxietyMeter", true, false)
 		if (meter != null):
 			meter.setAnxietyLevel(anxietyMeter)
 		var player = currentScene.find_node("Player", true, false)

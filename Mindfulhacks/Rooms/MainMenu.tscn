@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/Fonts/ThaleahFat.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts/Bigger.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/MainMenu/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://assets/Fonts/Smaller.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/Player/walk cycle.png" type="Texture" id=5]
+[ext_resource path="res://assets/MainMenu/wasd.png" type="Texture" id=6]
+[ext_resource path="res://assets/MainMenu/arrow.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "PlayerWalk"
@@ -56,7 +58,9 @@ margin_left = 96.2373
 margin_top = 59.9932
 margin_right = 224.237
 margin_bottom = 78.9932
+focus_mode = 0
 custom_fonts/font = ExtResource( 1 )
+enabled_focus_mode = 0
 text = "Start Game"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -68,7 +72,9 @@ margin_left = 96.2373
 margin_top = 90.334
 margin_right = 224.237
 margin_bottom = 109.334
+focus_mode = 0
 custom_fonts/font = ExtResource( 1 )
+enabled_focus_mode = 0
 text = "Credits"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -107,7 +113,9 @@ margin_left = 96.2373
 margin_top = 146.0
 margin_right = 229.237
 margin_bottom = 170.0
+focus_mode = 0
 custom_fonts/font = ExtResource( 1 )
+enabled_focus_mode = 0
 text = "back to main menu"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -117,6 +125,84 @@ __meta__ = {
 autoplay = "PlayerWalk"
 anims/PlayerWalk = SubResource( 1 )
 
+[node name="Instructions" type="Control" parent="."]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 283.0
+margin_bottom = 164.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Instructions"]
+margin_left = 0.300133
+margin_top = 6.35465
+margin_right = 247.3
+margin_bottom = 46.3546
+custom_fonts/font = ExtResource( 4 )
+text = "Welcome to MICROBFORM! 
+
+You will be playing as someone who has anxiety navigating daily life events."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Instructions"]
+margin_top = 50.334
+margin_right = 40.0
+margin_bottom = 64.334
+custom_fonts/font = ExtResource( 1 )
+text = "instructions:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Instructions"]
+margin_left = 194.661
+margin_top = 93.8337
+margin_right = 234.661
+margin_bottom = 107.834
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Instructions"]
+margin_left = 44.29
+margin_top = 77.2432
+margin_right = 113.29
+margin_bottom = 90.2432
+custom_fonts/font = ExtResource( 4 )
+text = "WASD or arrow keys to move"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="wasd" type="Sprite" parent="Instructions"]
+position = Vector2( 20.795, 81.8468 )
+scale = Vector2( 0.0551152, 0.054112 )
+texture = ExtResource( 6 )
+
+[node name="ready" type="Button" parent="Instructions"]
+modulate = Color( 0, 1, 0.976471, 1 )
+margin_left = 42.29
+margin_top = 106.0
+margin_right = 170.29
+margin_bottom = 125.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "i'm ready!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arrow" type="Sprite" parent="Instructions"]
+position = Vector2( 213.338, 81.9062 )
+scale = Vector2( 0.0657461, 0.0569403 )
+texture = ExtResource( 7 )
+
 [connection signal="pressed" from="MainPanel/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="MainPanel/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="CreditsMenu/CreditsBack" to="." method="_on_CreditsBack_pressed"]
+[connection signal="pressed" from="Instructions/ready" to="." method="_on_ready_pressed"]

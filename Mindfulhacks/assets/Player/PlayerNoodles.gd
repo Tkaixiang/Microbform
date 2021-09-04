@@ -15,7 +15,6 @@ onready var streetAnimeState = streetGhostAnimeTree.get("parameters/playback")
 onready var animationState = animationTree.get("parameters/playback")
 var movement = true
 var spill = false
-onready var SpeechText = $Player/Camera2D/SpeechText
 
 # Called when the node enters the scene tree for the first time.
 # Any child node _ready() functions are called first.

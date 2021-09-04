@@ -3,9 +3,7 @@ onready var root = get_tree().current_scene
 onready var anxietyLevel = root.get("anxietyMeter")
 onready var player = $Player
 # onready var playerNoodles = $PlayerNoodles
-onready var SpeechText = $Player/Camera2D/SpeechText
-onready var STMsg = $Player/Camera2D/SpeechText/Msg
-onready var doorDones = [$DoorDone, $DoorDone2, $DoorDone3]
+onready var SpeechText = $CanvasLayer/SpeechText
 var initState = 0
 var playerName = "MCB"
 
@@ -45,10 +43,19 @@ func selectedOption(option):
 		playerNoodles.position = player.global_position
 		playerNoodles.movement = true
 		self.remove_child(player)
-	
-	if not spillDoneState:
+		
+	if spillDoneState:
+		get_parent().add_child(player)
+		player.position = playerNoodles.global_position
 		player.movement = true
-		SpeechText.stopNReset()
+		self.remove_child(playerNoodles)
+		
+		root.doorDoneState[1] = true
+		root.setAnxietyMeter(anxietyLevel + 0.3)
+		root.gotoScene("res://Rooms/StartingRoom.tscn")
+
+	player.movement = true
+	SpeechText.stopNReset()
 
 func _on_Banana_area_entered(area):
 	
@@ -58,8 +65,6 @@ func _on_Banana_area_entered(area):
 		SpeechText.addMsg("Crash!")
 		SpeechText.addMsg("As you are wondering why your world has suddenly turned 180 degrees, a burst of stinging pain registers in your knees.")
 		SpeechText.addMsg("Congratulations on triggering the flag of one of the most embarassing incidents that can happen in a canteen, tripping over a banana peel!")
-		
-		root.setAnxietyMeter(anxietyLevel + 0.1)
 		
 		SpeechText.addMsg("Almost everybody's gazes are on your body, and no, this time it is not your made-up illusion.")
 		SpeechText.addMsg("As you slowly stand up, uncontrollable thoughts such as 'I want to jump into a hole right now' and 'Why am I so stupid goddamnit' pour into...")
@@ -92,12 +97,10 @@ func _on_NoodleStall_area_entered(area):
 		
 		SpeechText.addMsg("You pull out your wallet and examine its content. A sole, hazardly folded fifty-dollar bill lies quietly within.")
 		
-		root.setAnxietyMeter(anxietyLevel + 0.1)
-		
 		SpeechText.addMsg("Your smile freezes over.")
 		SpeechText.addMsg("You attempt to pull out your phone for NETS payment, but realize with horror that the Singtel 4G mobile data network has collapsed yet again.")
 		SpeechText.addMsg("You take a deep breath and hand the fifty-dollar bill to the auntie, who now wears a look you interpret as disdain.")
-		SpeechText.addQuestion("What will you do?", ["In mosquito's voice, apologize wearing the most awkward expression possible.", "Do nothing. What's wrong with a government-distributed 50-dollar bill?", "Do nothing, but wallow in shame on the inside."])
+		SpeechText.addQuestion("What will you do?", ["In a mosquito's voice, apologize wearing the most awkward expression possible.", "Do nothing. What's wrong with a government-distributed 50-dollar bill?", "Do nothing, but wallow in shame on the inside."])
 		SpeechText.playNext()
 		
 func _on_Spill_area_entered(area):
@@ -107,27 +110,9 @@ func _on_Spill_area_entered(area):
 		playerNoodles.movement = false
 		
 		playerNoodles.activateSpill()
-		
+				
 		SpeechText.addMsg("Whoosh!")
-		SpeechText.addMsg("Are you pleasantly surprised at the sequence of events??")
+		SpeechText.addMsg("Are you pleasantly surprised at the sequence of events?")
 		SpeechText.addMsg("Your first thought is 'There goes the better half of my three dollars fifty cents'.")
-		SpeechText.addQuestion("Your second thought is...", ["Humans are like clouds, and a sense of shame is water vapor.", "Nothing. You're so tired from your stream of bad luck that you don't even feel the need to dig a hole anymore.", "Bye bye, reputation."])
-		SpeechText.addMsg("The entire canteen is looking at you again.")
-		SpeechText.addMsg("Of course, there are some classmates who approach you with tissues and words of concern.")
-		SpeechText.addMsg("However, all that you can feel is a burning sense of shame and anxiety.")
-		SpeechText.addMsg("'This is like some kind of bad joke from an evil spirit', you sigh depressingly.")
+		SpeechText.addQuestion("Your second thought is...", ["Humans are like clouds, and a sense of shame is water vapor.", "Nothing. So tired - you don't even feel the need to dig a hole anymore.", "Bye bye, reputation."])
 		SpeechText.playNext()
-		playerNoodles.movement = true
-		
-func play_Spill_text():
-	root.setAnxietyMeter(anxietyLevel + 0.1)
-	
-	SpeechText.addMsg("Whoosh!")
-	SpeechText.addMsg("Are you pleasantly surprised at the sequence of events??")
-	SpeechText.addMsg("Your first thought is 'There goes the better half of my three dollars fifty cents'.")
-	SpeechText.addQuestion("Your second thought is...", ["Humans are like clouds, and a sense of shame is water vapor.", "Nothing. You're so tired from your stream of bad luck that you don't even feel the need to dig a hole anymore.", "Bye bye, reputation."])
-	SpeechText.addMsg("The entire canteen is looking at you again.")
-	SpeechText.addMsg("Of course, there are some classmates who approach you with tissues and words of concern.")
-	SpeechText.addMsg("However, all that you can feel is a burning sense of shame and anxiety.")
-	SpeechText.addMsg("'This is like some kind of bad joke from an evil spirit', you sigh depressingly.")
-	SpeechText.playNext()

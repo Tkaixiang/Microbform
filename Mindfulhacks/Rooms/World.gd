@@ -7,6 +7,7 @@ var playerName = ""
 var scenePath = ""
 var doorDoneState = [false, false, false]
 var anxietyMeter = 0.1
+var meter = null
 
 func _ready():
 	gotoScene("res://Rooms/MainMenu.tscn")
@@ -23,8 +24,8 @@ func setDoorDone(number):
 	
 func setAnxietyMeter(number):
 	anxietyMeter = number
-	var meter = self.find_node("AnxietyMeter", true, false)
-	meter.setAnxietyLevel(anxietyMeter)
+	if (meter != null):
+		meter.setAnxietyLevel(anxietyMeter)
 	
 	
 func _on_SceneChangeAnime_animation_finished(anim_name):
@@ -49,7 +50,7 @@ func _on_SceneChangeAnime_animation_finished(anim_name):
 			self.add_child(sceneInstance)
 			currentScene = sceneInstance
 		
-		var meter = currentScene.find_node("AnxietyMeter", true, false)
+		meter = currentScene.find_node("AnxietyMeter", true, false)
 		if (meter != null):
 			meter.setAnxietyLevel(anxietyMeter)
 		var player = currentScene.find_node("Player", true, false)

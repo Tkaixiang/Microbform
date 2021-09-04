@@ -17,8 +17,6 @@ var noodleStallDoneState = false
 
 func _ready():
 	player.movement = false
-	for x in doorDones:
-		x.visible = false
 	SpeechText.connect("allDone", self, "_all_Done")
 	SpeechText.connect("selectedOption", self, "selectedOption")
 	initState = 1

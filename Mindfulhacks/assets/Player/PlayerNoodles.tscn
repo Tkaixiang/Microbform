@@ -1,12 +1,13 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/Player/BusGhost.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://assets/Player/PlayerNoodles.gd" type="Script" id=2]
 [ext_resource path="res://assets/Player/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Canteen/canteen walk cycle.png" type="Texture" id=4]
 [ext_resource path="res://assets/Player/CanteenGhost.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Speech Text/SpeechText.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/AnxietyMeter/AnxietyMeter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/Streets/StreetGhost.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 6.0
@@ -147,9 +148,9 @@ tracks/0/keys = {
 "values": [ 15, 16, 17, 18, 19 ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=10]
 resource_name = "Spill"
-loop = true
+length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
@@ -157,85 +158,79 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
+"times": PoolRealArray( 0, 0.4, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 20, 21, 22 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "IdleLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "IdleDown"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "IdleRight"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "IdleUp"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=14]
-blend_point_0/node = SubResource( 10 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=15]
+blend_point_0/node = SubResource( 11 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 11 )
+blend_point_1/node = SubResource( 12 )
 blend_point_1/pos = Vector2( 0, 1 )
-blend_point_2/node = SubResource( 12 )
+blend_point_2/node = SubResource( 13 )
 blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 13 )
+blend_point_3/node = SubResource( 14 )
 blend_point_3/pos = Vector2( 0, -1 )
 blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id=15]
-animation = "RunLeft"
 
 [sub_resource type="AnimationNodeAnimation" id=16]
-animation = "RunDown"
+animation = "RunLeft"
 
 [sub_resource type="AnimationNodeAnimation" id=17]
-animation = "RunRight"
+animation = "RunDown"
 
 [sub_resource type="AnimationNodeAnimation" id=18]
+animation = "RunRight"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
 animation = "RunUp"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=19]
-blend_point_0/node = SubResource( 15 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=20]
+blend_point_0/node = SubResource( 16 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 16 )
+blend_point_1/node = SubResource( 17 )
 blend_point_1/pos = Vector2( 0, 1 )
-blend_point_2/node = SubResource( 17 )
+blend_point_2/node = SubResource( 18 )
 blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 18 )
+blend_point_3/node = SubResource( 19 )
 blend_point_3/pos = Vector2( 0, -1 )
 blend_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=20]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
 
-[sub_resource type="AnimationNodeStateMachine" id=22]
-states/Idle/node = SubResource( 14 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachine" id=23]
+states/Idle/node = SubResource( 15 )
 states/Idle/position = Vector2( 293, 93 )
-states/Run/node = SubResource( 19 )
+states/Run/node = SubResource( 20 )
 states/Run/position = Vector2( 502, 93 )
-transitions = [ "Idle", "Run", SubResource( 20 ), "Run", "Idle", SubResource( 21 ) ]
+transitions = [ "Idle", "Run", SubResource( 21 ), "Run", "Idle", SubResource( 22 ) ]
 start_node = "Idle"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=23]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
-[sub_resource type="CapsuleShape2D" id=24]
+[sub_resource type="CapsuleShape2D" id=25]
 radius = 4.57367
 height = 6.05583
 
 [node name="PlayerNoodles" type="KinematicBody2D"]
 scale = Vector2( 1.057, 1.207 )
 script = ExtResource( 2 )
-
-[node name="PlayerSprite" type="Sprite" parent="."]
-position = Vector2( 0.628811, -6.41263 )
-texture = ExtResource( 4 )
-hframes = 23
-frame = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -250,13 +245,12 @@ anims/RunDown = SubResource( 6 )
 anims/RunLeft = SubResource( 7 )
 anims/RunRight = SubResource( 8 )
 anims/RunUp = SubResource( 9 )
-anims/Spill = SubResource( 25 )
+anims/Spill = SubResource( 10 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 22 )
+tree_root = SubResource( 23 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource( 23 )
+parameters/playback = SubResource( 24 )
 parameters/Idle/blend_position = Vector2( 0.749186, 0.974138 )
 parameters/Run/blend_position = Vector2( -0.00194174, 0.0121458 )
 
@@ -265,13 +259,23 @@ parameters/Run/blend_position = Vector2( -0.00194174, 0.0121458 )
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0.477078, -1.12768 )
 scale = Vector2( 1.5, 1 )
-shape = SubResource( 24 )
+shape = SubResource( 25 )
 
 [node name="BusGhost" parent="." instance=ExtResource( 1 )]
-position = Vector2( 15.1793, -8.90522 )
+position = Vector2( 15.6258, -7.73222 )
 
 [node name="CanteenGhost" parent="." instance=ExtResource( 5 )]
-position = Vector2( 31.2259, -10.6239 )
+position = Vector2( -0.251453, -18.8349 )
+
+[node name="StreetGhost" parent="." instance=ExtResource( 8 )]
+position = Vector2( -15.1806, -7.42901 )
+
+[node name="PlayerSprite" type="Sprite" parent="."]
+position = Vector2( 0.628811, -6.41263 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 4 )
+hframes = 23
+frame = 20
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 3.78523, 2.66686 )
@@ -291,5 +295,7 @@ margin_top = 16.228
 margin_right = -89.5722
 margin_bottom = 16.228
 rect_scale = Vector2( 0.56, 0.741 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="Hitbox"]

@@ -12,13 +12,13 @@ extents = Vector2( 159.137, 21.868 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3.526, 50.0494 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 2.22766, 5.29675 )
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 8.05622
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 
 [node name="Canteen" type="Node2D"]
 script = ExtResource( 4 )
@@ -47,7 +47,7 @@ shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 68.4779, 71.522 )
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 31.4818, 75.7965 )
@@ -83,7 +83,7 @@ shape = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoodleStall"]
 position = Vector2( 105.883, 59.0158 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [connection signal="area_entered" from="Banana" to="." method="_on_Banana_area_entered"]
 [connection signal="area_entered" from="NoodleStall" to="." method="_on_NoodleStall_area_entered"]

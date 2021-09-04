@@ -34,7 +34,7 @@ func _on_SceneChangeAnime_animation_finished(anim_name):
 		self.remove_child(currentScene)
 		# Restore starting room scene instead of re-instancing it
 		if (scenePath.find("StartingRoom") != -1):
-			
+		
 			if (startingRoom != null):
 				self.add_child(startingRoom)
 				currentScene = startingRoom

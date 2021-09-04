@@ -37,7 +37,6 @@ func activateGhosts(ghost):
 	elif (ghost == "street"):
 		streetGhost.visible = true
 
-
 # Runs every single "physics frame"
 func _physics_process(delta): # Delta is how long the last frame took to process
 	

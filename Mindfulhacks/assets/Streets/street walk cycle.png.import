@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/NAY.png-40a7c589aa8a8e2aa5bbbf5edc6897a5.stex"
+path="res://.import/street walk cycle.png-3da8e305f2b71656edaed668bfbe6a1e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Bus/NAY.png"
-dest_files=[ "res://.import/NAY.png-40a7c589aa8a8e2aa5bbbf5edc6897a5.stex" ]
+source_file="res://assets/Streets/street walk cycle.png"
+dest_files=[ "res://.import/street walk cycle.png-3da8e305f2b71656edaed668bfbe6a1e.stex" ]
 
 [params]
 

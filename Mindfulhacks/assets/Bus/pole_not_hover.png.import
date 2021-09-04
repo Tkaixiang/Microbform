@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/NAY.png-40a7c589aa8a8e2aa5bbbf5edc6897a5.stex"
+path="res://.import/pole_not_hover.png-f2247f4cc0f9b3010ca7f263cbb96905.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Bus/NAY.png"
-dest_files=[ "res://.import/NAY.png-40a7c589aa8a8e2aa5bbbf5edc6897a5.stex" ]
+source_file="res://assets/Bus/pole_not_hover.png"
+dest_files=[ "res://.import/pole_not_hover.png-f2247f4cc0f9b3010ca7f263cbb96905.stex" ]
 
 [params]
 

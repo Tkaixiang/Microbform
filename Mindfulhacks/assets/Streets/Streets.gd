@@ -137,8 +137,8 @@ func selectedOption(option):
 		progress = 15
 	elif progress == 16:
 		root.setAnxietyMeter(root.anxietyMeter + 0.05, true)
-		SpeechText.addMsg("You decide to hurry off to the party anyways as you are really running out of time")
-		SpeechText.addMsg("the thought that you might have given the stranger the wrong directions lingers ominously over your head...")
+		SpeechText.addMsg("You decide to hurry off to the party as you are really running late...")
+		SpeechText.addMsg("Your anxiety has reached a peak... leading to the physical manifestation of the stranger haunting you for giving the wrong directions")
 		SpeechText.playNext()
 		progress = 17
 
@@ -177,11 +177,11 @@ func _on_Waypoint4_area_entered(area):
 		Player.movement = false
 		progress = 9
 		StrangerHarass.visible = true
-		StrangerHarassAnime.play("walkRight")
+		StrangerHarassAnime.play("walkTowards")
 
 func _on_StrangerPlayer_animation_finished(anim_name):
 	
-	if (anim_name == "walkRight"):
+	if (anim_name == "walkTowards"):
 		SpeechText.setPic("res://assets/Streets/character2.png")
 		SpeechText.addMsg("Stranger: Hold up please! I need help!")
 		SpeechText.addMsg("*You freeze in terror as someone calls out to you*")

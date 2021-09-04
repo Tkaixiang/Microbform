@@ -6,6 +6,7 @@ onready var SceneChangeAnime = $SceneChangeAnime
 var playerName = ""
 var scenePath = ""
 var doorDoneState = [false, false, false]
+var doorDones = 0
 var anxietyMeter = 0.1
 var meter = null
 
@@ -19,6 +20,7 @@ func gotoScene(path):
 
 # Number: 0-2
 func setDoorDone(number):
+	doorDones += 1
 	doorDoneState[number] = true
 	startingRoom.setDoorDone(number)
 	
@@ -34,12 +36,20 @@ func _on_SceneChangeAnime_animation_finished(anim_name):
 		self.remove_child(currentScene)
 		# Restore starting room scene instead of re-instancing it
 		if (scenePath.find("StartingRoom") != -1):
-		
-			if (startingRoom != null):
-				self.add_child(startingRoom)
-				currentScene = startingRoom
+			
+			
+			if (doorDones != 3):
+				if (startingRoom != null):
+					self.add_child(startingRoom)
+					currentScene = startingRoom
+				else:
+					var scene = load(scenePath)
+					var sceneInstance = scene.instance()
+					startingRoom = sceneInstance
+					currentScene = sceneInstance
+					self.add_child(sceneInstance)
 			else:
-				var scene = load(scenePath)
+				var scene = load("res://Rooms/FinalScene.tscn")
 				var sceneInstance = scene.instance()
 				startingRoom = sceneInstance
 				currentScene = sceneInstance
@@ -54,7 +64,7 @@ func _on_SceneChangeAnime_animation_finished(anim_name):
 		if (meter != null):
 			meter.setAnxietyLevel(anxietyMeter)
 		var player = currentScene.find_node("Player", true, false)
-		if (player != null):
+		if (player != null and doorDones != 3):
 			if (doorDoneState[0] == true):
 				player.activateGhosts("bus")
 			if (doorDoneState[1] == true):

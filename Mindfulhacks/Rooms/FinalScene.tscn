@@ -1,3 +1,32 @@
-[gd_scene format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Rooms/FinalScene.gd" type="Script" id=2]
+[ext_resource path="res://assets/AnxietyMeter/AnxietyMeter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Speech Text/SpeechText.tscn" type="PackedScene" id=4]
 
 [node name="FinalScene" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -0.631279, 1.81272 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 3.78523, 2.66686 )
+z_index = 3
+current = true
+zoom = Vector2( 0.7, 1 )
+
+[node name="AnxietyMeter" parent="Player/Camera2D" instance=ExtResource( 3 )]
+margin_left = 14.3136
+margin_top = -88.3201
+margin_right = 14.3136
+margin_bottom = -88.3201
+rect_scale = Vector2( 0.320433, 0.395057 )
+
+[node name="SpeechText" parent="Player/Camera2D" instance=ExtResource( 4 )]
+margin_left = -112.437
+margin_top = 27.2926
+margin_right = -112.437
+margin_bottom = 27.2926
+rect_scale = Vector2( 0.7, 0.932 )

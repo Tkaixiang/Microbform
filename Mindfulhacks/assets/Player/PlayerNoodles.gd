@@ -15,6 +15,7 @@ onready var streetAnimeState = streetGhostAnimeTree.get("parameters/playback")
 onready var animationState = animationTree.get("parameters/playback")
 var movement = true
 var spill = false
+onready var SpeechText = $Player/Camera2D/SpeechText
 
 # Called when the node enters the scene tree for the first time.
 # Any child node _ready() functions are called first.
@@ -23,7 +24,7 @@ func _ready(): # "_" means a "callback" function
 	canteenGhost.visible = false
 	streetGhost.visible = false
 	animationTree.active = true # Activate animationTree
-	activateSpill()
+	# activateSpill()
 
 const MAX_SPEED = 60
 const ACCELERATION = 280
@@ -83,3 +84,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if (anim_name == "Spill"):
 		spill = false
 		animationTree.active = true
+	
+		

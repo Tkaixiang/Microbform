@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Speech Text/SpeechText.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Player/Player.tscn" type="PackedScene" id=2]
@@ -19,6 +19,9 @@ extents = Vector2( 2.22766, 5.29675 )
 radius = 8.05622
 
 [sub_resource type="RectangleShape2D" id=5]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 1.11713, 16.2195 )
 
 [node name="Canteen" type="Node2D"]
 script = ExtResource( 4 )
@@ -85,5 +88,12 @@ shape = SubResource( 4 )
 position = Vector2( 105.883, 59.0158 )
 shape = SubResource( 5 )
 
+[node name="Spill" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spill"]
+position = Vector2( 135.194, 79.015 )
+shape = SubResource( 6 )
+
 [connection signal="area_entered" from="Banana" to="." method="_on_Banana_area_entered"]
 [connection signal="area_entered" from="NoodleStall" to="." method="_on_NoodleStall_area_entered"]
+[connection signal="area_entered" from="Spill" to="." method="_on_Spill_area_entered"]

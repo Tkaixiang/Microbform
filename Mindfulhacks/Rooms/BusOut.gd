@@ -15,9 +15,6 @@ func _ready():
 func _all_Done(type):
 	print("Done")
 
-func _on_right2_area_entered(area):
-	root.gotoScene("res://Rooms/Bus.tscn")
-
 func _on_buspole_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		root.gotoScene("res://Rooms/StartingRoom.tscn")

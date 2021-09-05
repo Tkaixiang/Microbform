@@ -156,7 +156,7 @@ func scene_5():
 
 func scene_6(): 
 	questionNumber = 6
-	SpeechText.setPic("res://assets/Bus/wallet.png")
+	SpeechText.setPic("res://assets/Bus/wallet_found.png")
 	SpeechText.addMsg("You've found your wallet! You pull it out with a sigh of relief.")
 	SpeechText.addQuestion("Now, better get tapping.", ["Tap wallet against scanner"])
 

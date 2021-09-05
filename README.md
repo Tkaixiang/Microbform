@@ -1,6 +1,6 @@
 # Microbform - Mindfulhacks
 
-### Play the game [here]()
+### Play the game [here](https://scripts.irscybersec.tk/MCB/MindfulHacks.html)
 
 ### Devpost link [here]()
 

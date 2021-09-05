@@ -62,7 +62,7 @@ func selectedOption(option):
 	SpeechText.stopNReset()
 
 func exit_sequence(): 
-	root.doorDoneState[1] = true
+	root.setDoorDone(1)
 	root.setAnxietyMeter(anxietyLevel + 0.3)
 	root.gotoScene("res://Rooms/StartingRoom.tscn")
 

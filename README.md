@@ -4,11 +4,11 @@
 
 ### Devpost link [here](https://devpost.com/software/microbform)
 
-## Tools Used:
-
-- Godot Game Engine
-- Twine
-- Pixilart
+## Developers:
+- [Teo Kai Xiang](https://github.com/Tkaixiang)
+- [Lien Cai Ting](https://github.com/lctxct)
+- [Grace Zhu](https://github.com/lalamoo)
+- [Dinh Thao Vy](https://github.com/fillantrophy02)
 
 ## How to Export The Game
 

@@ -13,5 +13,6 @@ func _ready():
 		
 
 func _on_Button_pressed():
-	world.gotoScene("res://Rooms/StartingRoom.tscn")
 	world.setDoorDone(room)
+	world.gotoScene("res://Rooms/StartingRoom.tscn")
+	

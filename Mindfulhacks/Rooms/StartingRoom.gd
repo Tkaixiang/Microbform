@@ -58,7 +58,7 @@ func setDoorDone(number):
 func _on_Door1_area_entered(area):
 	door1Area = true
 	if (not root.doorDoneState[0]):
-		SpeechText.addMsg("Ah, it's time to take the bus to school before I am late! Gas gas gas ")
+		SpeechText.addMsg("Ah, it's time to take the bus to school before I am late!")
 		SpeechText.addQuestion("Take the bus?", ["Yes", "No"])
 		SpeechText.playNext()
 func _on_Door1_area_exited(area):

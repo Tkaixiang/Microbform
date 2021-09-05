@@ -28,7 +28,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 10, 84.7707 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "moveRight"
 length = 2.0
 loop = true
@@ -45,7 +45,7 @@ tracks/0/keys = {
 "values": [ Vector2( 169, 110.13 ), Vector2( 190, 110.13 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "moveRight"
 length = 2.0
 loop = true
@@ -62,7 +62,7 @@ tracks/0/keys = {
 "values": [ Vector2( 299.727, 110.13 ), Vector2( 325.899, 110.13 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=7]
 radius = 22.3101
 height = 0.0
 
@@ -115,7 +115,6 @@ texture = ExtResource( 7 )
 [node name="music_dude" type="AnimatedSprite" parent="StaticBody2D"]
 position = Vector2( 317.475, 61.472 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="right" type="Area2D" parent="StaticBody2D"]
@@ -132,7 +131,7 @@ hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="arrow"]
 autoplay = "moveRight"
-anims/moveRight = SubResource( 6 )
+anims/moveRight = SubResource( 5 )
 
 [node name="arrow2" type="Sprite" parent="."]
 position = Vector2( 312.21, 110.13 )
@@ -142,7 +141,7 @@ hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="arrow2"]
 autoplay = "moveRight"
-anims/moveRight = SubResource( 7 )
+anims/moveRight = SubResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 63.6472, 112.676 )
@@ -160,7 +159,7 @@ position = Vector2( -7.62939e-06, -7.62939e-06 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CardReader"]
 position = Vector2( 122.548, 128.378 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="CardReaderTimer" type="Timer" parent="."]
 

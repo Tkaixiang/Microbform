@@ -168,13 +168,13 @@ func scene_8():
 	questionNumber = 8
 	root.setAnxietyMeter(anxietyLevel + 0.1, true)
 	SpeechText.addQuestion("BUZZ. Invalid card.", ["Try again, but press harder this time", "Take EZ-link card out"])
-	SpeechText.setPic("res://assets/Bus/NAY.png")
+	SpeechText.setPic("res://assets/Bus/nay.png")
 	start_timer()
 	
 func scene_9(): 
 	questionNumber = 9
 	SpeechText.addQuestion("Mmm...still nothing...", ["Tap card again, but this time at an angle", "Take EZ-link card out"])
-	SpeechText.setPic("res://assets/Bus/NAY.png")
+	SpeechText.setPic("res://assets/Bus/nay.png")
 	start_timer()
 
 func scene_10(): 
@@ -191,7 +191,7 @@ func scene_12():
 
 func scene_13(): 
 	questionNumber = 13
-	SpeechText.setPic("res://assets/Bus/YAY.png")
+	SpeechText.setPic("res://assets/Bus/yay.png")
 	SpeechText.addMsg("It's out! You tap your wallet against the card reader and it flashes the card value screen of success.")
 
 	root.setAnxietyMeter(anxietyLevel + 0.1, true)
@@ -227,7 +227,7 @@ func scene_17():
 
 func scene_18(): 
 	questionNumber = 18
-	SpeechText.setPic("res://assets/Bus/YAY.png")
+	SpeechText.setPic("res://assets/Bus/yay.png")
 	SpeechText.addMsg("OH THANK THE HEAVENS. The sweet beep of success...")
 	
 	root.setAnxietyMeter(anxietyLevel + 0.1, true)

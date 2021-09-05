@@ -121,3 +121,4 @@ func selectedOption(option):
 
 func _on_Back_pressed():
 	world.gotoScene("res://Rooms/MainMenu.tscn")
+	world.resetAll()

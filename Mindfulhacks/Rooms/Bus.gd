@@ -200,19 +200,19 @@ func scene_13():
 func scene_14(): 
 	questionNumber = 14
 	SpeechText.addQuestion("Still nope.", ["Keep tapping", "Take EZ-link card out"])
-	SpeechText.setPic("res://assets/Bus/NAY.png")
+	SpeechText.setPic("res://assets/Bus/nay.png")
 	start_timer()
 
 func scene_15(): 
 	questionNumber = 15
 	SpeechText.addQuestion("ArghhHHHHHHHh.", ["There's no going back. Tap card."])
-	SpeechText.setPic("res://assets/Bus/NAY.png")
+	SpeechText.setPic("res://assets/Bus/nay.png")
 	start_timer()
 
 func scene_16(): 
 	questionNumber = 16
 	SpeechText.addQuestion("...", ["Tap card."])
-	SpeechText.setPic("res://assets/Bus/NAY.png")
+	SpeechText.setPic("res://assets/Bus/nay.png")
 	start_timer()
 
 func scene_17(): 
@@ -222,7 +222,7 @@ func scene_17():
 		SpeechText.addQuestion("...", ["Tap card."])
 	else: 
 		SpeechText.addQuestion("...", ["Tap card.", "TAP. CARD."])
-	SpeechText.setPic("res://assets/Bus/NAY.png")
+	SpeechText.setPic("res://assets/Bus/nay.png")
 	start_timer()
 
 func scene_18(): 

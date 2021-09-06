@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/okay.png-a8c18427b719e908c4d6ccf6ecc74d5a.stex"
+path="res://.import/nay.png-b2f840a2af7a132d4c86b468f066ab8a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Bus/okay.png"
-dest_files=[ "res://.import/okay.png-a8c18427b719e908c4d6ccf6ecc74d5a.stex" ]
+source_file="res://assets/Bus/cardreader/nay.png"
+dest_files=[ "res://.import/nay.png-b2f840a2af7a132d4c86b468f066ab8a.stex" ]
 
 [params]
 

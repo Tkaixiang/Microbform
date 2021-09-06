@@ -1,32 +1,39 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://assets/Bus/passenger_2.png" type="Texture" id=1]
+[ext_resource path="res://assets/Bus/passengers/passenger_1_asleep_2.png" type="Texture" id=1]
 [ext_resource path="res://assets/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/Speech Text/SpeechText.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Bus/bus interior.png" type="Texture" id=4]
-[ext_resource path="res://assets/Bus/passenger_1.png" type="Texture" id=5]
+[ext_resource path="res://assets/Bus/passengers/passenger_1_asleep_1.png" type="Texture" id=5]
 [ext_resource path="res://Rooms/Bus.gd" type="Script" id=6]
-[ext_resource path="res://assets/Bus/old_man.png" type="Texture" id=7]
+[ext_resource path="res://assets/Bus/passengers/old_man.png" type="Texture" id=7]
 [ext_resource path="res://assets/AnxietyMeter/AnxietyMeter.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/Skip/Skip.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/Streets/arrow.png" type="Texture" id=10]
+[ext_resource path="res://assets/Bus/passengers/passenger_1_awake_1.png" type="Texture" id=11]
+[ext_resource path="res://assets/Bus/passengers/passenger_1_awake_2.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 208, 24 )
+extents = Vector2( 208, 9.62013 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 112 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 10, 84.7707 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 1 ) ],
 "loop": true,
-"name": "default",
+"name": "sleeping",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "awake",
 "speed": 2.0
 } ]
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 10, 84.7707 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "moveRight"
@@ -66,13 +73,15 @@ tracks/0/keys = {
 radius = 22.3101
 height = 0.0
 
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 12.9203
+
 [node name="BusScene" type="Node2D"]
 script = ExtResource( 6 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SpeechText" parent="CanvasLayer" instance=ExtResource( 3 )]
-visible = false
 use_parent_material = true
 margin_left = -0.529739
 margin_top = 106.119
@@ -82,10 +91,13 @@ rect_scale = Vector2( 0.993637, 1.08811 )
 
 [node name="AnxietyMeter" parent="CanvasLayer" instance=ExtResource( 8 )]
 margin_left = 169.0
-margin_right = 169.0
+margin_right = 152.0
+margin_bottom = -142.0
 rect_scale = Vector2( 0.49031, 0.518644 )
 
 [node name="Skip" parent="CanvasLayer" instance=ExtResource( 9 )]
+margin_right = -243.0
+margin_bottom = -161.0
 rect_scale = Vector2( 0.72, 0.84 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -96,16 +108,22 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
 [node name="bottom" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 206.74, 203.78 )
+position = Vector2( 207.24, 186.78 )
 shape = SubResource( 1 )
 
 [node name="top" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 208, 96 )
+position = Vector2( 208, 115.689 )
 shape = SubResource( 1 )
 
 [node name="left" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( -16.63, 121.449 )
 shape = SubResource( 2 )
+
+[node name="right" type="Area2D" parent="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/right"]
+position = Vector2( 422.971, 92.9191 )
+shape = SubResource( 4 )
 
 [node name="old_man" type="Sprite" parent="StaticBody2D"]
 position = Vector2( 149.214, 87.0982 )
@@ -113,15 +131,10 @@ scale = Vector2( 1.27533, 1.27533 )
 texture = ExtResource( 7 )
 
 [node name="music_dude" type="AnimatedSprite" parent="StaticBody2D"]
-position = Vector2( 317.475, 61.472 )
+position = Vector2( 316.811, 61.9631 )
 frames = SubResource( 3 )
+animation = "sleeping"
 playing = true
-
-[node name="right" type="Area2D" parent="StaticBody2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/right"]
-position = Vector2( 422.971, 92.9191 )
-shape = SubResource( 4 )
 
 [node name="arrow" type="Sprite" parent="."]
 position = Vector2( 183.839, 110.13 )
@@ -144,11 +157,11 @@ autoplay = "moveRight"
 anims/moveRight = SubResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 63.6472, 112.676 )
-scale = Vector2( 3.06442, 2.2579 )
+position = Vector2( 64.0441, 134.106 )
+scale = Vector2( 2.74442, 2.2579 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( -3.8147e-06, -10.6293 )
+position = Vector2( 0.69224, -19.7112 )
 scale = Vector2( 0.997433, 0.967831 )
 current = true
 limit_left = 0
@@ -163,6 +176,13 @@ shape = SubResource( 7 )
 
 [node name="CardReaderTimer" type="Timer" parent="."]
 
+[node name="music_dude_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="music_dude_area"]
+position = Vector2( 316.318, 65.5124 )
+shape = SubResource( 8 )
+
 [connection signal="area_entered" from="StaticBody2D/right" to="." method="_on_right_area_entered"]
 [connection signal="area_entered" from="CardReader" to="." method="_on_CardReader_area_entered"]
 [connection signal="area_exited" from="CardReader" to="." method="_on_CardReader_area_exited"]
+[connection signal="input_event" from="music_dude_area" to="." method="_on_music_dude_area_input_event"]

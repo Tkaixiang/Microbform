@@ -4,9 +4,9 @@
 [ext_resource path="res://assets/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/Speech Text/SpeechText.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Bus/bus_out_interior.png" type="Texture" id=4]
-[ext_resource path="res://assets/Bus/pole_not_hover.png" type="Texture" id=5]
+[ext_resource path="res://assets/Bus/pole/pole_not_hover.png" type="Texture" id=5]
 [ext_resource path="res://Rooms/BusOut.gd" type="Script" id=6]
-[ext_resource path="res://assets/Bus/pole_hover.png" type="Texture" id=7]
+[ext_resource path="res://assets/Bus/pole/pole_hover.png" type="Texture" id=7]
 [ext_resource path="res://assets/AnxietyMeter/AnxietyMeter.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/Skip/Skip.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/Streets/arrow.png" type="Texture" id=10]
@@ -18,10 +18,10 @@ extents = Vector2( 76, 10 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 49.5 )
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 14.2092
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "moveRight"
 length = 2.0
 loop = true
@@ -115,7 +115,7 @@ texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="buspole"]
 position = Vector2( 34.3234, 77.5756 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="arrow2" type="Sprite" parent="."]
 position = Vector2( 68.9479, 73.7916 )
@@ -126,7 +126,7 @@ frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="arrow2"]
 autoplay = "moveRight"
-anims/moveRight = SubResource( 5 )
+anims/moveRight = SubResource( 4 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 49.6063

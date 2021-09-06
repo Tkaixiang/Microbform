@@ -133,7 +133,7 @@ func selectedOption(option):
 # Creating functions for each scene because it's too confusing uwu 
 func scene_1(): 
 	questionNumber = 1
-	SpeechText.setPic("res://assets/Bus/wallet_missing.png")
+	SpeechText.setPic("res://assets/Bus/wallet/wallet_missing.png")
 	root.setAnxietyMeter(anxietyLevel + 0.1, true)
 	SpeechText.addQuestion("You're on a bus! Time to pull out your wallet", ["Check left pocket", "Check right pocket", "Check bag"])
 
@@ -156,7 +156,7 @@ func scene_5():
 
 func scene_6(): 
 	questionNumber = 6
-	SpeechText.setPic("res://assets/Bus/wallet_found.png")
+	SpeechText.setPic("res://assets/Bus/wallet/wallet_found.png")
 	SpeechText.addMsg("You've found your wallet! You pull it out with a sigh of relief.")
 	SpeechText.addQuestion("Now, better get tapping.", ["Tap wallet against scanner"])
 
@@ -168,13 +168,13 @@ func scene_8():
 	questionNumber = 8
 	root.setAnxietyMeter(anxietyLevel + 0.1, true)
 	SpeechText.addQuestion("BUZZ. Invalid card.", ["Try again, but press harder this time", "Take EZ-link card out"])
-	SpeechText.setPic("res://assets/Bus/nay.png")
+	SpeechText.setPic("res://assets/Bus/cardreader/nay.png")
 	start_timer()
 	
 func scene_9(): 
 	questionNumber = 9
 	SpeechText.addQuestion("Mmm...still nothing...", ["Tap card again, but this time at an angle", "Take EZ-link card out"])
-	SpeechText.setPic("res://assets/Bus/nay.png")
+	SpeechText.setPic("res://assets/Bus/cardreader/nay.png")
 	start_timer()
 
 func scene_10(): 
@@ -191,7 +191,7 @@ func scene_12():
 
 func scene_13(): 
 	questionNumber = 13
-	SpeechText.setPic("res://assets/Bus/yay.png")
+	SpeechText.setPic("res://assets/Bus/cardreader/yay.png")
 	SpeechText.addMsg("It's out! You tap your wallet against the card reader and it flashes the card value screen of success.")
 
 	root.setAnxietyMeter(anxietyLevel + 0.1, true)
@@ -200,19 +200,19 @@ func scene_13():
 func scene_14(): 
 	questionNumber = 14
 	SpeechText.addQuestion("Still nope.", ["Keep tapping", "Take EZ-link card out"])
-	SpeechText.setPic("res://assets/Bus/nay.png")
+	SpeechText.setPic("res://assets/Bus/cardreader/nay.png")
 	start_timer()
 
 func scene_15(): 
 	questionNumber = 15
 	SpeechText.addQuestion("ArghhHHHHHHHh.", ["There's no going back. Tap card."])
-	SpeechText.setPic("res://assets/Bus/nay.png")
+	SpeechText.setPic("res://assets/Bus/cardreader/nay.png")
 	start_timer()
 
 func scene_16(): 
 	questionNumber = 16
 	SpeechText.addQuestion("...", ["Tap card."])
-	SpeechText.setPic("res://assets/Bus/nay.png")
+	SpeechText.setPic("res://assets/Bus/cardreader/nay.png")
 	start_timer()
 
 func scene_17(): 
@@ -222,12 +222,12 @@ func scene_17():
 		SpeechText.addQuestion("...", ["Tap card."])
 	else: 
 		SpeechText.addQuestion("...", ["Tap card.", "TAP. CARD."])
-	SpeechText.setPic("res://assets/Bus/nay.png")
+	SpeechText.setPic("res://assets/Bus/cardreader/nay.png")
 	start_timer()
 
 func scene_18(): 
 	questionNumber = 18
-	SpeechText.setPic("res://assets/Bus/yay.png")
+	SpeechText.setPic("res://assets/Bus/cardreader/yay.png")
 	SpeechText.addMsg("OH THANK THE HEAVENS. The sweet beep of success...")
 	
 	root.setAnxietyMeter(anxietyLevel + 0.1, true)
@@ -243,9 +243,13 @@ func start_timer():
 	timer.start() #to start
 
 func _on_timer_timeout():
-	SpeechText.setPic("res://assets/Bus/okay.png")
+	SpeechText.setPic("res://assets/Bus/cardreader/okay.png")
 	timer.stop() 
 
 # Bus exit 
 func _on_right_area_entered(area):
 	root.gotoScene("res://Rooms/BusOut.tscn")
+
+func _on_music_dude_area_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton:
+		get_node("StaticBody2D/music_dude").play("awake")

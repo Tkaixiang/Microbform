@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wallet_found.png-5ac892a68f434e735f3332853f2280fb.stex"
+path="res://.import/passenger_1_asleep_1.png-9ed58fdf836e821ddec95014c78646a0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Bus/wallet_found.png"
-dest_files=[ "res://.import/wallet_found.png-5ac892a68f434e735f3332853f2280fb.stex" ]
+source_file="res://assets/Bus/passengers/passenger_1_asleep_1.png"
+dest_files=[ "res://.import/passenger_1_asleep_1.png-9ed58fdf836e821ddec95014c78646a0.stex" ]
 
 [params]
 

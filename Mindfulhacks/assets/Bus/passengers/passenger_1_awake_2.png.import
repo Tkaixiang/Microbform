@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/nay.png-c4578027f7b07ee2220137447e5c74d1.stex"
+path="res://.import/passenger_1_awake_2.png-d02466528c4aad7e76da0774c20ae61f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Bus/nay.png"
-dest_files=[ "res://.import/nay.png-c4578027f7b07ee2220137447e5c74d1.stex" ]
+source_file="res://assets/Bus/passengers/passenger_1_awake_2.png"
+dest_files=[ "res://.import/passenger_1_awake_2.png-d02466528c4aad7e76da0774c20ae61f.stex" ]
 
 [params]
 

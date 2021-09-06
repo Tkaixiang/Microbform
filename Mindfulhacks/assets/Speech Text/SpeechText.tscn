@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Speech Text/SpeechText.gd" type="Script" id=1]
 [ext_resource path="res://assets/Fonts/ThaleahFat.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Fonts/Smaller.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/Bush.png" type="Texture" id=4]
 [ext_resource path="res://assets/Fonts/EvenSmaller.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/Speech Text/sounds_voices_typewriter.mp3" type="AudioStream" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.215686, 0.215686, 0.215686, 1 )
@@ -26,6 +27,7 @@ anti_aliasing = false
 [sub_resource type="Animation" id=3]
 resource_name = "DisplayMsg&Options"
 length = 1.4
+step = 0.025
 tracks/0/type = "value"
 tracks/0/path = NodePath("Text:percent_visible")
 tracks/0/interp = 1
@@ -74,9 +76,34 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("../TextTyping:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, true, true, true, true, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../TextTyping:stream_paused")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.55 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 1.5
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Text:percent_visible")
 tracks/0/interp = 1
@@ -88,6 +115,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../TextTyping:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.07, 0.14, 0.21, 0.28, 0.36, 0.44, 0.52, 0.59, 0.6, 0.67, 0.75, 0.83, 0.92, 0.99, 1.08, 1.16, 1.25, 1.33, 1.41 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../TextTyping:stream_paused")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -285,6 +336,10 @@ anims/RevealText = SubResource( 4 )
 [node name="ContinuePlayer" type="AnimationPlayer" parent="Msg"]
 autoplay = "ContinueMsg"
 anims/ContinueMsg = SubResource( 5 )
+
+[node name="TextTyping" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -15.43
 
 [connection signal="pressed" from="SelectOption/Option1" to="." method="_on_Option1_pressed"]
 [connection signal="pressed" from="SelectOption/Option2" to="." method="_on_Option2_pressed"]

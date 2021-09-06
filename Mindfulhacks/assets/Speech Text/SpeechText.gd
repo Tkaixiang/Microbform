@@ -15,6 +15,7 @@ onready var SelectOptionText = $SelectOption/Text
 onready var options = [$SelectOption/Option1, $SelectOption/Option2, $SelectOption/Option3]
 onready var optionsText = [$SelectOption/Option1/Label, $SelectOption/Option2/Label, $SelectOption/Option3/Label]
 onready var SelectOptionAnime = $SelectOption/SelectOptionAnimation
+onready var TextTyping = $TextTyping
 
 signal allDone(type)
 signal selectedOption(optionValue)
@@ -61,11 +62,13 @@ func stopNReset():
 	AnimePlayerRevealText.stop(true)
 	SelectOptionAnime.stop(true)
 	self.visible = false
+	TextTyping.playing = false
 
 func _input(event):
 	if ((Input.is_action_just_pressed("enter") or Input.is_action_just_pressed("left_click")) and self.visible):
 		if (not finishedTextPressNext and SelectOption.visible == false):
 			AnimePlayerRevealText.seek(1.48)
+			TextTyping.playing = false
 		if (finishedTextPressNext and SelectOption.visible == false):
 			finishedTextPressNext = false
 			if (len(queue) > 0):
@@ -73,6 +76,7 @@ func _input(event):
 			else:
 				self.visible = false
 				AnimePlayerRevealText.stop(true)
+				TextTyping.playing = false
 				emit_signal("allDone", "msg")
 
 func _on_AnimePlayer_animation_finished(anim_name):

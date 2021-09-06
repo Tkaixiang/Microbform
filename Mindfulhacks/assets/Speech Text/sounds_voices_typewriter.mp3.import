@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sounds_voices_typewriter.mp3-cd60a1eaf28b29fa578a64900a3f38b0.mp3str"
+
+[deps]
+
+source_file="res://assets/Speech Text/sounds_voices_typewriter.mp3"
+dest_files=[ "res://.import/sounds_voices_typewriter.mp3-cd60a1eaf28b29fa578a64900a3f38b0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

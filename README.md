@@ -1,6 +1,6 @@
 # Microbform - Mindfulhacks
 
-### Play the game [here](https://tkaixiang.github.io/microbform/) or on [itch.io](https://tkaixiang.itch.io/microbform)
+### Play the game [here](https://tkaixiang.github.io/Microbform/) or on [itch.io](https://tkaixiang.itch.io/microbform)
 
 ### Devpost link [here](https://devpost.com/software/microbform)
 
